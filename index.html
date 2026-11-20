@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>بوابة النشاط التفاعلي للطلاب</title>
+  <title>منصة هارون الرشيد — القدرات والتحصيلي</title>
   <style>
     :root {
-      --bg: #f4f7fb;
+      --primary: #0f4c3a;
+      --primary-dark: #093327;
+      --gold: #b5892b;
+      --gold-light: #fdf8ec;
+      --bg: #f4f7f5;
       --card: #ffffff;
-      --primary: #1d4ed8;
-      --primary-hover: #1e40af;
-      --accent: #0f766e;
       --text: #0f172a;
       --muted: #475569;
-      --border: #e2e8f0;
-      --success-bg: #ecfdf5;
-      --success-border: #10b981;
-      --success-text: #065f46;
+      --border: #dce4df;
+      --ok-bg: #ecfdf5;
+      --ok-text: #065f46;
+      --bad-bg: #fef2f2;
+      --bad-text: #991b1b;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -32,50 +32,74 @@
     }
 
     .container {
-      max-width: 960px;
+      max-width: 1020px;
       margin: 0 auto;
-      padding: 24px 16px 48px;
+      padding: 20px 16px 52px;
     }
 
-    .hero {
-      background: linear-gradient(135deg, #1d4ed8, #0f766e);
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
       color: #fff;
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 28px 24px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
-      margin-bottom: 24px;
+      border-bottom: 5px solid var(--gold);
+      box-shadow: 0 10px 25px rgba(9, 51, 39, 0.14);
+      margin-bottom: 22px;
     }
 
-    .badge {
+    .school-tag {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.18);
-      padding: 4px 12px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 4px 14px;
       border-radius: 999px;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       margin-bottom: 10px;
     }
 
-    .hero h1 {
-      margin: 0 0 10px;
-      font-size: 1.8rem;
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 1.85rem;
     }
 
-    .hero p {
-      margin: 0;
+    .header p {
+      margin: 0 0 16px;
       opacity: 0.95;
-      font-size: 1.02rem;
     }
 
-    .grid {
+    .meta-bar {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.18);
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-size: 0.92rem;
     }
 
-    @media (min-width: 768px) {
-      .grid-2 {
-        grid-template-columns: 1.1fr 0.9fr;
-      }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .tab-btn {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
     }
 
     .card {
@@ -83,8 +107,8 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 22px;
+      margin-bottom: 18px;
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
-      margin-bottom: 20px;
     }
 
     .card h2 {
@@ -93,103 +117,36 @@
       color: var(--primary);
     }
 
-    ol.steps {
-      margin: 0;
-      padding-right: 20px;
-    }
-
-    ol.steps li {
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-
-    .link-box {
-      background: #f8fafc;
-      border: 1px dashed #94a3b8;
-      border-radius: 12px;
-      padding: 12px;
-      font-size: 0.9rem;
-      word-break: break-all;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    button, a.btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 11px 18px;
-      border-radius: 10px;
-      border: none;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-hover);
-    }
-
-    .btn-secondary {
-      background: #e2e8f0;
-      color: var(--text);
-    }
-
-    .btn-secondary:hover {
-      background: #cbd5e1;
-    }
-
-    .embed-wrapper {
+    .q-box {
       border: 1px solid var(--border);
       border-radius: 14px;
-      overflow: hidden;
-      background: #fff;
-      margin-top: 12px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 540px;
-      border: 0;
-      display: block;
-    }
-
-    .notice {
-      font-size: 0.88rem;
-      color: var(--muted);
-      background: #f1f5f9;
-      padding: 10px 14px;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-
-    .form-group {
+      padding: 16px;
       margin-bottom: 14px;
+      background: #fafcfb;
     }
 
-    label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 6px;
-      font-size: 0.95rem;
+    .q-title {
+      font-weight: 700;
+      margin-bottom: 10px;
     }
 
-    input[type="text"],
-    textarea {
+    .options {
+      display: grid;
+      gap: 8px;
+    }
+
+    .opt-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      padding: 9px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    input[type="text"], textarea, select {
       width: 100%;
       padding: 10px 12px;
       border: 1px solid #cbd5e1;
@@ -199,250 +156,200 @@
       background: #fff;
     }
 
-    input[type="text"]:focus,
-    textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+    textarea { min-height: 90px; resize: vertical; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 10px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.2s ease;
     }
 
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
 
-    .feedback {
+    .btn-gold { background: var(--gold); color: #fff; }
+    .btn-secondary { background: #e2e8f0; color: var(--text); }
+
+    .result-box {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 10px;
       display: none;
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: 12px;
-      background: var(--success-bg);
-      border: 1px solid var(--success-border);
-      color: var(--success-text);
       font-size: 0.92rem;
     }
 
-    .submissions-list {
-      margin-top: 16px;
+    .ok { background: var(--ok-bg); color: var(--ok-text); border: 1px solid #6ee7b7; display: block; }
+    .bad { background: var(--bad-bg); color: var(--bad-text); border: 1px solid #fca5a5; display: block; }
+
+    .resources-grid {
       display: grid;
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
     }
 
-    .submission-item {
+    .res-item {
       border: 1px solid var(--border);
-      background: #f8fafc;
-      border-radius: 10px;
-      padding: 12px;
-      font-size: 0.9rem;
+      border-right: 4px solid var(--gold);
+      background: var(--gold-light);
+      padding: 14px;
+      border-radius: 12px;
     }
 
-    .submission-meta {
-      font-weight: 700;
+    .res-item a {
       color: var(--primary);
-      margin-bottom: 4px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 24px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <header class="hero">
-      <div class="badge">نشاط تعليمي تفاعلي</div>
-      <h1>مرحباً بكم في النشاط التفاعلي</h1>
-      <p>اطّلع على التعليمات، افتح النشاط التعليمي، ثم سجّل ملخص مشاركتك أو إجابتك في الأسفل.</p>
+    <header class="header">
+      <div class="school-tag">ثانوية هارون الرشيد — المدينة المنورة</div>
+      <h1>منصة المراجعة والتدريب للقدرات والتحصيلي</h1>
+      <p>منصة تعليمية تفاعلية لدعم الطلاب في المذاكرة، المراجعة، وحل الأسئلة والنماذج التدريبية في الأقسام اللغوية والعلمية.</p>
+      <div class="meta-bar">
+        <div><strong>المدرسة:</strong> ثانوية هارون الرشيد بالمدينة المنورة</div>
+        <div><strong>مدير المدرسة:</strong> سلطان معلا المطيري</div>
+        <div><strong>إعداد وتنسيق:</strong> خالد العرفي</div>
+      </div>
     </header>
 
-    <div class="grid grid-2">
-      <section class="card">
-        <h2>تعليمات الطالب</h2>
-        <ol class="steps">
-          <li>اضغط على زر <strong>«فتح النشاط في نافذة جديدة»</strong> أو تفاعل معه مباشرة في الإطار أدناه.</li>
-          <li>اقرأ محتوى النشاط بعناية وأكمل المطلوب خطوة بخطوة.</li>
-          <li>بعد الانتهاء، اكتب اسمك وملخص ما تعلمته أو إجابتك في نموذج التسليم.</li>
-          <li>انسخ ملخص الإجابة وأرسله لمعلمك عبر قناة الصف المعتمدة إذا طُلب منك ذلك.</li>
-        </ol>
-      </section>
+    <nav class="tabs" aria-label="أقسام المنصة">
+      <button type="button" class="tab-btn active" data-tab="verbal">القسم اللغوي (القدرات)</button>
+      <button type="button" class="tab-btn" data-tab="quant">القسم الكمي والأسئلة التكميلية</button>
+      <button type="button" class="tab-btn" data-tab="tahsili">التحصيلي والمراجعة</button>
+      <button type="button" class="tab-btn" data-tab="sources">مراجع ونماذج موثوقة</button>
+      <button type="button" class="tab-btn" data-tab="submit">تسليم الطالب</button>
+    </nav>
 
-      <section class="card">
-        <h2>الوصول السريع للنشاط</h2>
-        <div class="link-box" id="activityUrlText">
-          https://claude.ai/artifact/QZFbwsBSEo6qGbdXYkebAr
-        </div>
-        <div class="btn-row">
-          <a
-            id="openActivityBtn"
-            href="https://claude.ai/artifact/QZFbwsBSEo6qGbdXYkebAr"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-primary"
-          >
-            فتح النشاط في نافذة جديدة
-          </a>
-          <button type="button" id="copyLinkBtn" class="btn btn-secondary">
-            نسخ الرابط
-          </button>
-        </div>
-        <div class="notice">
-          إذا لم يظهر المحتوى داخل الإطار المدمج بسبب إعدادات الأمان في متصفحك أو في موقع المصدر، فاستخدم زر <strong>«فتح النشاط في نافذة جديدة»</strong>.
-        </div>
-      </section>
-    </div>
+    <!-- القسم اللغوي -->
+    <section id="tab-verbal" class="card tab-panel">
+      <h2>التدريب اللغوي (التناظر اللفظي واستيعاب المقروء)</h2>
 
-    <section class="card">
-      <h2>نافذة النشاط التفاعلي</h2>
-      <div class="embed-wrapper">
-        <iframe
-          id="activityFrame"
-          src="https://claude.ai/artifact/QZFbwsBSEo6qGbdXYkebAr"
-          title="النشاط التفاعلي للطلاب"
-          loading="lazy"
-          allow="clipboard-write"
-        ></iframe>
+      <div class="q-box" data-answer="b" data-explain="العلاقة (جزء من كل)؛ الغصن جزء من الشجرة، والصفحة جزء من الكتاب.">
+        <div class="q-title">1. غُصن : شجرة</div>
+        <div class="options">
+          <label class="opt-label"><input type="radio" name="q1" value="a" /> قلم : سبورة</label>
+          <label class="opt-label"><input type="radio" name="q1" value="b" /> صفحة : كتاب</label>
+          <label class="opt-label"><input type="radio" name="q1" value="c" /> مدرسة : طالب</label>
+          <label class="opt-label"><input type="radio" name="q1" value="d" /> سيارة : طريق</label>
+        </div>
+        <button type="button" class="btn btn-primary check-q" style="margin-top:10px">تحقق من الإجابة</button>
+        <div class="result-box"></div>
+      </div>
+
+      <div class="q-box" data-answer="c" data-explain="العلاقة تضاد؛ الإهمال عكس الإتقان، والكسل عكس النشاط.">
+        <div class="q-title">2. إهمال : إتقان</div>
+        <div class="options">
+          <label class="opt-label"><input type="radio" name="q2" value="a" /> اجتهاد : نجاح</label>
+          <label class="opt-label"><input type="radio" name="q2" value="b" /> قراءة : علم</label>
+          <label class="opt-label"><input type="radio" name="q2" value="c" /> كسل : نشاط</label>
+          <label class="opt-label"><input type="radio" name="q2" value="d" /> سؤال : جواب</label>
+        </div>
+        <button type="button" class="btn btn-primary check-q" style="margin-top:10px">تحقق من الإجابة</button>
+        <div class="result-box"></div>
       </div>
     </section>
 
-    <section class="card">
-      <h2>تسجيل مشاركة الطالب</h2>
-      <form id="studentForm">
-        <div class="form-group">
-          <label for="studentName">الاسم الثلاثي للطالب</label>
-          <input type="text" id="studentName" placeholder="مثال: أحمد محمد السالم" required />
-        </div>
+    <!-- القسم الكمي والأسئلة التكميلية -->
+    <section id="tab-quant" class="card tab-panel" style="display:none">
+      <h2>القسم الكمي والأسئلة التكميلية</h2>
 
-        <div class="form-group">
-          <label for="studentClass">الصف / المجموعة (اختياري)</label>
-          <input type="text" id="studentClass" placeholder="مثال: أول ثانوي - أ" />
+      <div class="q-box" data-answer="b" data-explain="إذا كان سعر الدفتر 12 ريالاً، فإن سعر 4 دفاتر = 12 × 4 = 48 ريالاً.">
+        <div class="q-title">1. إذا كان ثمن الدفتر الواحد 12 ريالاً، فما ثمن 4 دفاتر؟</div>
+        <div class="options">
+          <label class="opt-label"><input type="radio" name="q3" value="a" /> 36 ريالاً</label>
+          <label class="opt-label"><input type="radio" name="q3" value="b" /> 48 ريالاً</label>
+          <label class="opt-label"><input type="radio" name="q3" value="c" /> 52 ريالاً</label>
+          <label class="opt-label"><input type="radio" name="q3" value="d" /> 60 ريالاً</label>
         </div>
+        <button type="button" class="btn btn-primary check-q" style="margin-top:10px">تحقق من الإجابة</button>
+        <div class="result-box"></div>
+      </div>
 
-        <div class="form-group">
-          <label for="studentNote">إجابتك أو ملخص ما استفدته من النشاط</label>
-          <textarea
-            id="studentNote"
-            placeholder="اكتب إجابتك أو الفكرة الرئيسية التي توصلت إليها..."
-            required
-          ></textarea>
+      <div class="q-box" data-answer="c" data-explain="المتوسط الحسابي = مجموع القيم ÷ عددها = (10 + 14 + 18) ÷ 3 = 42 ÷ 3 = 14.">
+        <div class="q-title">2. سؤال تكميلي: ما المتوسط الحسابي للأعداد (10 ، 14 ، 18)؟</div>
+        <div class="options">
+          <label class="opt-label"><input type="radio" name="q4" value="a" /> 12</label>
+          <label class="opt-label"><input type="radio" name="q4" value="b" /> 13</label>
+          <label class="opt-label"><input type="radio" name="q4" value="c" /> 14</label>
+          <label class="opt-label"><input type="radio" name="q4" value="d" /> 16</label>
         </div>
-
-        <div class="btn-row">
-          <button type="submit" class="btn btn-primary">حفظ وتوليد ملخص التسليم</button>
-          <button type="button" id="copySummaryBtn" class="btn btn-secondary">نسخ ملخص التسليم</button>
-        </div>
-      </form>
-
-      <div class="feedback" id="feedbackBox"></div>
-      <div class="submissions-list" id="submissionsList"></div>
+        <button type="button" class="btn btn-primary check-q" style="margin-top:10px">تحقق من الإجابة</button>
+        <div class="result-box"></div>
+      </div>
     </section>
-  </div>
 
-  <script>
-    const ACTIVITY_URL = "https://claude.ai/artifact/QZFbwsBSEo6qGbdXYkebAr";
-    const STORAGE_KEY = "student_activity_submissions_v1";
+    <!-- التحصيلي والمراجعة -->
+    <section id="tab-tahsili" class="card tab-panel" style="display:none">
+      <h2>التحصيلي والمراجعة السريعة</h2>
 
-    const copyLinkBtn = document.getElementById("copyLinkBtn");
-    const studentForm = document.getElementById("studentForm");
-    const feedbackBox = document.getElementById("feedbackBox");
-    const submissionsList = document.getElementById("submissionsList");
-    const copySummaryBtn = document.getElementById("copySummaryBtn");
+      <div class="q-box" data-answer="a" data-explain="السرعة المتجهة المتوسطة تساوي الإزاحة الكلية مقسومة على الزمن الكلي.">
+        <div class="q-title">1. في الفيزياء: حاصل قسمة الإزاحة الكلية على الزمن الكلي يمثل:</div>
+        <div class="options">
+          <label class="opt-label"><input type="radio" name="q5" value="a" /> السرعة المتجهة المتوسطة</label>
+          <label class="opt-label"><input type="radio" name="q5" value="b" /> التسارع اللحظي</label>
+          <label class="opt-label"><input type="radio" name="q5" value="c" /> القوة العمودية</label>
+          <label class="opt-label"><input type="radio" name="q5" value="d" /> الشغل الميكانيكي</label>
+        </div>
+        <button type="button" class="btn btn-primary check-q" style="margin-top:10px">تحقق من الإجابة</button>
+        <div class="result-box"></div>
+      </div>
+    </section>
 
-    let lastSummaryText = "";
+    <!-- مراجع ونماذج موثوقة -->
+    <section id="tab-sources" class="card tab-panel" style="display:none">
+      <h2>مراجع ونماذج موثوقة للمذاكرة</h2>
+      <p>استعن بالمصادر الرسمية والنماذج التدريبية المعتمدة لتعزيز الفهم والمراجعة المستمرة:</p>
+      <div class="resources-grid">
+        <div class="res-item">
+          <div><strong>هيئة تقويم التعليم والتدريب</strong></div>
+          <p style="margin:6px 0 8px;font-size:0.9rem">المرجع الرسمي لاختباري القدرات العامة والتحصيلي والتعريف بالمعايير.</p>
+          <a href="https://etec.gov.sa" target="_blank" rel="noopener noreferrer">زيارة الموقع الرسمي ←</a>
+        </div>
+        <div class="res-item">
+          <div><strong>منصة عين الإثرائية</strong></div>
+          <p style="margin:6px 0 8px;font-size:0.9rem">شروحات ومراجعات منهجية للمواد العلمية واللغوية.</p>
+          <a href="https://ien.edu.sa" target="_blank" rel="noopener noreferrer">زيارة منصة عين ←</a>
+        </div>
+      </div>
+    </section>
 
-    copyLinkBtn.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(ACTIVITY_URL);
-        copyLinkBtn.textContent = "تم نسخ الرابط ✓";
-        setTimeout(() => {
-          copyLinkBtn.textContent = "نسخ الرابط";
-        }, 2000);
-      } catch {
-        alert("انسخ الرابط يدوياً: " + ACTIVITY_URL);
-      }
-    });
-
-    function loadSubmissions() {
-      try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-      } catch {
-        return [];
-      }
-    }
-
-    function saveSubmissions(items) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    }
-
-    function renderSubmissions() {
-      const items = loadSubmissions();
-      submissionsList.innerHTML = "";
-      if (!items.length) return;
-
-      items.slice().reverse().forEach((item) => {
-        const div = document.createElement("div");
-        div.className = "submission-item";
-        div.innerHTML = `
-          <div class="submission-meta">${escapeHtml(item.name)}${item.group ? " — " + escapeHtml(item.group) : ""}</div>
-          <div>${escapeHtml(item.note)}</div>
-        `;
-        submissionsList.appendChild(div);
-      });
-    }
-
-    function escapeHtml(str) {
-      return str
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
-    }
-
-    studentForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("studentName").value.trim();
-      const group = document.getElementById("studentClass").value.trim();
-      const note = document.getElementById("studentNote").value.trim();
-
-      if (!name || !note) return;
-
-      const entry = {
-        name,
-        group,
-        note,
-        time: new Date().toLocaleString("ar-SA")
-      };
-
-      const items = loadSubmissions();
-      items.push(entry);
-      saveSubmissions(items);
-      renderSubmissions();
-
-      lastSummaryText =
-        `الاسم: ${name}\n` +
-        (group ? `الصف/المجموعة: ${group}\n` : "") +
-        `النشاط: ${ACTIVITY_URL}\n` +
-        `المشاركة/الإجابة: ${note}`;
-
-      feedbackBox.style.display = "block";
-      feedbackBox.innerHTML =
-        `<strong>تم حفظ مشاركتك بنجاح!</strong> يمكنك الآن الضغط على <strong>«نسخ ملخص التسليم»</strong> وإرساله لمعلمك.`;
-
-      studentForm.reset();
-    });
-
-    copySummaryBtn.addEventListener("click", async () => {
-      if (!lastSummaryText) {
-        alert("يرجى تعبئة النموذج والضغط على «حفظ وتوليد ملخص التسليم» أولاً.");
-        return;
-      }
-      try {
-        await navigator.clipboard.writeText(lastSummaryText);
-        copySummaryBtn.textContent = "تم نسخ الملخص ✓";
-        setTimeout(() => {
-          copySummaryBtn.textContent = "نسخ ملخص التسليم";
-        }, 2000);
-      } catch {
-        alert(lastSummaryText);
-      }
-    });
-
-    renderSubmissions();
-  </script>
-</body>
-</html>
+    <!-- تسليم الطالب -->
+    <section id="tab-submit" class="card tab-panel" style="display:none">
+      <h2>تسليم نتيجة المراجعة وملاحظات الطالب</h2>
+      <form id="studentReportForm">
+        <div style="margin-bottom:12px">
+          <label for="stName"><strong>اسم الطالب الثلاثي</strong></label>
+          <input type="text" id="stName" placeholder="مثال: عبدالله محمد" required />
+        </div>
+        <div style="margin-bottom:12px">
+          <label for="stSection"><strong>القسم الذي راجعته</strong></label>
+          <select id="stSection">
+            <option value="القسم اللغوي (القدرات)">القسم اللغوي (القدرات)</option>
+            <option value="القسم الكمي والأسئلة التكميلية">القسم الكمي والأسئلة التكميلية</option>
+            <option value="التحصيلي والمراجعة">التحصيلي والمراجعة</option>
+          </select>
+        </div>
+        <div style="margin-bottom:12px">
+          <label for="stNote"><strong>ملخص ما راجعته أو استفسارك</strong></label>
+          <textarea id="stNote" placeholder="اكتب ملاحظاتك أو درجتك في التدريبات..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary
