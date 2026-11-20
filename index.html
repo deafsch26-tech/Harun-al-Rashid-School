@@ -631,7 +631,6 @@
   </div>
 
   <script>
-    // مولّد 100 سؤال لكل قسم
     function buildVerbal100() {
       const analogies = [
         ["غصن : شجرة", ["قلم : سبورة", "صفحة : كتاب", "مدرسة : طالب", "سيارة : طريق"], 1, "الغصن جزء من الشجرة والصفحة جزء من الكتاب."],
@@ -653,7 +652,7 @@
 
       const comprehensions = [
         ["بحسب نصوص التدريب: ما أثر تنظيم الوقت اليومي للطالب؟", ["يقلل الضغط ويزيد الاستيعاب", "يؤدي إلى تشتت الانتباه", "يلغي الحاجة للمراجعة", "يضاعف وقت المذاكرة دون فائدة"], 0, "تنظيم الوقت يساعد على تقليل الضغط وزيادة الاستيعاب."],
-        ["ما أهمية حل نماذج الأعوام السابقة قبل الاختبار؟", ["تعرّف الطالب بنمط الأسئلة وتديره للوقت", "تغني عن فهم المفاهيم الأساسية", "تعتمد على التخمين فقط", "تُستخدم في آخر ساعة فقط"], 0, "نماذج الأعوام السابقة تعرّف بنمط الأسئلة وتدرب على إدارة الوقت."],
+        ["ما أهمية حل نماذج الأعوام السابقة قبل الاختبار؟", ["تعرّف الطالب بنمط الأسئلة وتدربه على إدارة الوقت", "تغني عن فهم المفاهيم الأساسية", "تعتمد على التخمين فقط", "تُستخدم في آخر ساعة فقط"], 0, "نماذج الأعوام السابقة تعرّف بنمط الأسئلة وتدرب على إدارة الوقت."],
         ["ما السلوك الأفضل عند مواجهة سؤال صعب أثناء الاختبار؟", ["تجاوزه مؤقتاً والعودة إليه لاحقاً", "التوقف طويلاً عنده وإضاعة الوقت", "ترك بقية الأسئلة دون محاولة", "مسح الإجابات السابقة"], 0, "تجاوز السؤال الصعب مؤقتاً يحفظ الوقت لبقية الأسئلة."]
       ];
 
@@ -669,151 +668,20 @@
         if (i <= 35) {
           cat = "التناظر اللفظي";
           item = analogies[(i - 1) % analogies.length];
-          out.push({
-            id: "v_" + i,
-            num: i,
-            cat,
-            q: `${i}. ${item[0]}`,
-            opts: item[1],
-            ans: item[2],
-            exp: item[3]
-          });
         } else if (i <= 60) {
           cat = "إكمال الجمل";
           item = completions[(i - 36) % completions.length];
-          out.push({
-            id: "v_" + i,
-            num: i,
-            cat,
-            q: `${i}. ${item[0]}`,
-            opts: item[1],
-            ans: item[2],
-            exp: item[3]
-          });
         } else if (i <= 85) {
           cat = "استيعاب المقروء";
           item = comprehensions[(i - 61) % comprehensions.length];
-          out.push({
-            id: "v_" + i,
-            num: i,
-            cat,
-            q: `${i}. ${item[0]}`,
-            opts: item[1],
-            ans: item[2],
-            exp: item[3]
-          });
         } else {
           cat = "الخطأ السياقي";
           item = contextualErrors[(i - 86) % contextualErrors.length];
-          out.push({
-            id: "v_" + i,
-            num: i,
-            cat,
-            q: `${i}. ${item[0]}`,
-            opts: item[1],
-            ans: item[2],
-            exp: item[3]
-          });
         }
-      }
-      return out;
-    }
-
-    function buildQuant100() {
-      const out = [];
-      for (let i = 1; i <= 100; i++) {
-        const k = (i % 9) + 2;
-        if (i <= 30) {
-          const price = k * 5;
-          const count = 3;
-          const total = price * count;
-          out.push({
-            id: "q_" + i,
-            num: i,
-            cat: "الحساب والنسب",
-            q: `${i}. إذا كان سعر دفتر ${price} ريالاً، فكم ثمن ${count} دفاتر من النوع نفسه؟`,
-            opts: [`${total - 10} ريالاً`, `${total} ريالاً`, `${total + 10} ريالاً`, `${total + 15} ريالاً`],
-            ans: 1,
-            exp: `${price} × ${count} = ${total} ريالاً.`
-          });
-        } else if (i <= 55) {
-          const offset = k + 4;
-          const x = k * 3;
-          const sum = x + offset;
-          out.push({
-            id: "q_" + i,
-            num: i,
-            cat: "الجبر والمعادلات",
-            q: `${i}. إذا كان س + ${offset} = ${sum}، فما قيمة س؟`,
-            opts: [`${x - 2}`, `${x}`, `${x + 2}`, `${sum}`],
-            ans: 1,
-            exp: `س = ${sum} - ${offset} = ${x}.`
-          });
-        } else if (i <= 80) {
-          const len = k + 6;
-          const wid = k + 2;
-          const perim = 2 * (len + wid);
-          out.push({
-            id: "q_" + i,
-            num: i,
-            cat: "الهندسة والقياس",
-            q: `${i}. مستطيل طوله ${len} سم وعرضه ${wid} سم، ما محيطه؟`,
-            opts: [`${len + wid} سم`, `${perim} سم`, `${len * wid} سم`, `${perim + 4} سم`],
-            ans: 1,
-            exp: `المحيط = 2 × (${len} + ${wid}) = ${perim} سم.`
-          });
-        } else {
-          const avg = k * 4;
-          const n = 3;
-          const totalSum = avg * n;
-          out.push({
-            id: "q_" + i,
-            num: i,
-            cat: "الإحصاء والاحتمالات",
-            q: `${i}. متوسط (معدل) ${n} أعداد يساوي ${avg}، فما مجموع هذه الأعداد؟`,
-            opts: [`${avg}`, `${totalSum - 6}`, `${totalSum}`, `${totalSum + 6}`],
-            ans: 2,
-            exp: `المجموع = المتوسط × العدد = ${avg} × ${n} = ${totalSum}.`
-          });
-        }
-      }
-      return out;
-    }
-
-    function buildTahsili100() {
-      const bank = {
-        "الرياضيات": [
-          ["إذا كانت د(س) = 3س + 2، فإن د(2) تساوي:", ["6", "8", "10", "5"], 1, "د(2) = 3(2) + 2 = 8."],
-          ["مشتقة الدالة الثابتة ف(س) = 15 تساوي:", ["15", "1", "0", "س"], 2, "مشتقة العدد الثابت تساوي دائماً صفراً."],
-          ["مجموع زوايا المثلث الداخلية في الهندسة الإقليدية يساوي:", ["90°", "180°", "270°", "360°"], 1, "مجموع زوايا أي مثلث يساوي 180 درجة."]
-        ],
-        "الفيزياء": [
-          ["الوحدة الدولية لقياس القوة (F) هي:", ["الجول", "النيوتن", "الواط", "الأوم"], 1, "تقاس القوة بوحدة النيوتن (N)."],
-          ["إذا تحرك جسم بسرعة ثابتة في خط مستقيم، فإن تسارعه يساوي:", ["موجباً دائماً", "سالباً دائماً", "صفراً", "مساوياً للسرعة"], 2, "ثبات السرعة المتجهة يعني أن التسارع يساوي صفراً."],
-          ["سرعة الضوء في الفراغ تساوي تقريباً:", ["3 × 10⁸ م/ث", "3 × 10⁶ م/ث", "343 م/ث", "1500 م/ث"], 0, "سرعة الضوء في الفراغ تساوي تقريباً 3 × 10⁸ م/ث."]
-        ],
-        "الكيمياء": [
-          ["الرقم الهيدروجيني (pH) للمحاليل الحمضية يكون:", ["أكبر من 7", "يساوي 7", "أقل من 7", "يساوي 14"], 2, "المحاليل الحمضية لها pH أقل من 7."],
-          ["أي مما يلي يُعدّ تغيراً كيميائياً؟", ["انصهار الجليد", "تبخر الماء", "صدأ الحديد", "تقطيع الورق"], 2, "صدأ الحديد ينتج مادة جديدة لذا هو تغير كيميائي."],
-          ["العدد الذري للعنصر يمثل عدد:", ["النيوترونات فقط", "البروتونات في النواة", "الإلكترونات المفقودة", "الكتلة الذرية"], 1, "العدد الذري يساوي عدد البروتونات داخل نواة الذرة."]
-        ],
-        "الأحياء": [
-          ["العضية المسؤولة عن إنتاج الطاقة (ATP) في الخلية هي:", ["الرايبوسوم", "الميتوكندريا", "النوية", "الفجوة"], 1, "الميتوكندريا هي مركز إنتاج الطاقة في الخلية."],
-          ["تحدث عملية البناء الضوئي في النباتات أساساً داخل:", ["البلاستيدات الخضراء", "الجدار الخلوي", "الليسوسوم", "الغشاء البلازمي"], 0, "تتم عملية البناء الضوئي في البلاستيدات الخضراء."],
-          ["الجزيء الذي يحمل المعلومات الوراثية في معظم الكائنات الحية هو:", ["DNA", "ATP", "الجلوكوز", "النشا"], 0, "الحمض النووي DNA يحمل الشيفرة الوراثية."]
-        ]
-      };
-
-      const subjects = Object.keys(bank);
-      const out = [];
-      for (let i = 1; i <= 100; i++) {
-        const subj = subjects[(i - 1) % subjects.length];
-        const list = bank[subj];
-        const item = list[Math.floor((i - 1) / subjects.length) % list.length];
         out.push({
-          id: "t_" + i,
+          id: "v_" + i,
           num: i,
-          cat: subj,
+          cat,
           q: `${i}. ${item[0]}`,
           opts: item[1],
           ans: item[2],
@@ -823,251 +691,6 @@
       return out;
     }
 
-    const SECTIONS = {
-      verbal: { data: buildVerbal100(), filter: "all", page: 1, pageSize: 10, quickIds: null },
-      quant: { data: buildQuant100(), filter: "all", page: 1, pageSize: 10, quickIds: null },
-      tahsili: { data: buildTahsili100(), filter: "all", page: 1, pageSize: 10, quickIds: null }
-    };
-
-    function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
-    }
-
-    function getFilteredQuestions(secKey) {
-      const st = SECTIONS[secKey];
-      if (st.quickIds) {
-        return st.data.filter((q) => st.quickIds.includes(q.id));
-      }
-      if (st.filter === "all") return st.data;
-      return st.data.filter((q) => q.cat === st.filter);
-    }
-
-    function renderSection(secKey) {
-      const st = SECTIONS[secKey];
-      const filtered = getFilteredQuestions(secKey);
-      const totalPages = Math.max(1, Math.ceil(filtered.length / st.pageSize));
-      if (st.page > totalPages) st.page = 1;
-
-      const start = (st.page - 1) * st.pageSize;
-      const pageItems = filtered.slice(start, start + st.pageSize);
-
-      const listEl = document.getElementById(secKey + "List");
-      const statusEl = document.getElementById(secKey + "Status");
-      const pagesEl = document.getElementById(secKey + "Pages");
-
-      statusEl.textContent = `إجمالي الأسئلة المطابقة: ${filtered.length} — الصفحة ${st.page} من ${totalPages}`;
-      listEl.innerHTML = "";
-
-      pageItems.forEach((item) => {
-        const box = document.createElement("div");
-        box.className = "q-box";
-        const optsHtml = item.opts
-          .map(
-            (opt, idx) => `
-            <label class="opt">
-              <input type="radio" name="${item.id}" value="${idx}" />
-              <span>${escapeHtml(opt)}</span>
-            </label>
-          `
-          )
-          .join("");
-
-        box.innerHTML = `
-          <div class="q-meta">${escapeHtml(item.cat)} — سؤال رقم ${item.num}</div>
-          <div class="q-text">${escapeHtml(item.q)}</div>
-          <div class="opts">${optsHtml}</div>
-          <div class="exp" id="exp-${item.id}"></div>
-        `;
-        listEl.appendChild(box);
-      });
-
-      pagesEl.innerHTML = "";
-      if (!st.quickIds && totalPages > 1) {
-        for (let p = 1; p <= totalPages; p++) {
-          const btn = document.createElement("button");
-          btn.type = "button"
-          btn.className = "page-btn" + (p === st.page ? " active" : "");
-          btn.textContent = p;
-          btn.addEventListener("click", () => {
-            st.page = p;
-            renderSection(secKey);
-          });
-          pagesEl.appendChild(btn);
-        }
-      }
-    }
-
-    function gradeCurrentView(secKey) {
-      const st = SECTIONS[secKey];
-      const filtered = getFilteredQuestions(secKey);
-      const start = (st.page - 1) * st.pageSize;
-      const targetItems = st.quickIds ? filtered : filtered.slice(start, start + st.pageSize);
-
-      let correct = 0;
-      targetItems.forEach((item) => {
-        const chosen = document.querySelector(`input[name="${item.id}"]:checked`);
-        const expEl = document.getElementById("exp-" + item.id);
-        if (!expEl) return;
-        expEl.classList.remove("ok", "err");
-
-        if (chosen && Number(chosen.value) === item.ans) {
-          correct++;
-          expEl.classList.add("ok");
-          expEl.textContent = "إجابة صحيحة — " + item.exp;
-        } else {
-          expEl.classList.add("err");
-          expEl.textContent = "الصحيح: (" + item.opts[item.ans] + ") — " + item.exp;
-        }
-      });
-
-      const pct = targetItems.length ? Math.round((correct / targetItems.length) * 100) : 0;
-      const resEl = document.getElementById(secKey + "Result");
-      resEl.style.display = "block";
-      resEl.textContent = `نتيجتك في هذه المجموعة: ${correct} من ${targetItems.length} (${pct}%)`;
-    }
-
-    function resetCurrentView(secKey) {
-      const st = SECTIONS[secKey];
-      st.quickIds = null;
-      st.page = 1;
-      st.data.forEach((item) => {
-        document.querySelectorAll(`input[name="${item.id}"]`).forEach((r) => {
-          r.checked = false;
-        });
-        const expEl = document.getElementById("exp-" + item.id);
-        if (expEl) {
-          expEl.className = "exp";
-          expEl.textContent = "";
-        }
-      });
-      const resEl = document.getElementById(secKey + "Result");
-      resEl.style.display = "none";
-      resEl.textContent = "";
-      renderSection(secKey);
-    }
-
-    function startQuickQuiz(secKey, count) {
-      const st = SECTIONS[secKey];
-      const pool = st.filter === "all" ? st.data : st.data.filter((q) => q.cat === st.filter);
-      const shuffled = [...pool].sort(() => Math.random() - 0.5).slice(0, count);
-      st.quickIds = shuffled.map((q) => q.id);
-      st.page = 1;
-      renderSection(secKey);
-    }
-
-    // تبويبات التنقل الرئيسية
-    function openTab(tabName) {
-      document.querySelectorAll(".tab-btn").forEach((b) => {
-        b.classList.toggle("active", b.dataset.tab === tabName);
-      });
-      document.querySelectorAll(".panel").forEach((p) => {
-        p.classList.toggle("active", p.id === "panel-" + tabName);
-      });
-    }
-
-    document.querySelectorAll(".tab-btn").forEach((btn) => {
-      btn.addEventListener("click", () => openTab(btn.dataset.tab));
-    });
-
-    document.querySelectorAll(".jump-tab").forEach((btn) => {
-      btn.addEventListener("click", () => openTab(btn.dataset.jump));
-    });
-
-    // فلاتر الأقسام
-    ["verbal", "quant", "tahsili"].forEach((secKey) => {
-      document.querySelectorAll(`#${secKey}Filters .chip`).forEach((chip) => {
-        chip.addEventListener("click", () => {
-          document.querySelectorAll(`#${secKey}Filters .chip`).forEach((c) => c.classList.remove("active"));
-          chip.classList.add("active");
-          SECTIONS[secKey].quickIds = null;
-          SECTIONS[secKey].filter = chip.dataset.filter;
-          SECTIONS[secKey].page = 1;
-          renderSection(secKey);
-        });
-      });
-    });
-
-    document.getElementById("quickVerbalBtn").addEventListener("click", () => startQuickQuiz("verbal", 20));
-    document.getElementById("quickQuantBtn").addEventListener("click", () => startQuickQuiz("quant", 20));
-    document.getElementById("quickTahsiliBtn").addEventListener("click", () => startQuickQuiz("tahsili", 20));
-
-    document.getElementById("gradeVerbalBtn").addEventListener("click", () => gradeCurrentView("verbal"));
-    document.getElementById("gradeQuantBtn").addEventListener("click", () => gradeCurrentView("quant"));
-    document.getElementById("gradeTahsiliBtn").addEventListener("click", () => gradeCurrentView("tahsili"));
-
-    document.getElementById("resetVerbalBtn").addEventListener("click", () => resetCurrentView("verbal"));
-    document.getElementById("resetQuantBtn").addEventListener("click", () => resetCurrentView("quant"));
-    document.getElementById("resetTahsiliBtn").addEventListener("click", () => resetCurrentView("tahsili"));
-
-    // تسليم الطلاب
-    const STORAGE_KEY = "harun_alrashid_300q_v1";
-    let lastReport = "";
-
-    function getLogs() {
-      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); } catch { return []; }
-    }
-    function saveLogs(arr) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-    }
-    function renderLogs() {
-      const box = document.getElementById("submitLog");
-      const items = getLogs();
-      box.innerHTML = "";
-      items.slice().reverse().forEach((item) => {
-        const div = document.createElement("div");
-        div.className = "log-item";
-        div.innerHTML = `<strong>${escapeHtml(item.name)}</strong> ${item.grade ? "(" + escapeHtml(item.grade) + ")" : ""} — <small>${escapeHtml(item.date)}</small><div>${escapeHtml(item.summary)}</div>`;
-        box.appendChild(div);
-      });
-    }
-
-    document.getElementById("submitForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("stName").value.trim();
-      const grade = document.getElementById("stGrade").value.trim();
-      const summary = document.getElementById("stSummary").value.trim();
-      if (!name || !summary) return;
-
-      const date = new Date().toLocaleString("ar-SA");
-      const items = getLogs();
-      items.push({ name, grade, summary, date });
-      saveLogs(items);
-      renderLogs();
-
-      lastReport =
-        `منصة المراجعة والتدريب للقدرات والتحصيلي\n` +
-        `ثانوية هارون الرشيد — المدينة المنورة\n` +
-        `مدير المدرسة: سلطان معلا المطيري | إعداد وتنسيق: خالد العرفي\n` +
-        `الطالب: ${name}${grade ? " (" + grade + ")" : ""}\n` +
-        `الملخص والملاحظات: ${summary}`;
-
-      const msg = document.getElementById("submitMsg");
-      msg.style.display = "block";
-      msg.textContent = "تم حفظ التسليم وتجهيز التقرير بنجاح. اضغط على «نسخ التقرير» لإرساله.";
-      e.target.reset();
-    });
-
-    document.getElementById("copyReportBtn").addEventListener("click", async () => {
-      if (!lastReport) {
-        alert("يرجى تعبئة بيانات التسليم والضغط على «حفظ وتوليد تقرير التسليم» أولاً.");
-        return;
-      }
-      try {
-        await navigator.clipboard.writeText(lastReport);
-        alert("تم نسخ التقرير بنجاح.");
-      } catch {
-        alert(lastReport);
-      }
-    });
-
-    renderSection("verbal");
-    renderSection("quant");
-    renderSection("tahsili");
-    renderLogs();
-  </script>
-</body>
-</html>
+    function buildQuant100() {
+      const out = [];
+      for (let i = 1;
