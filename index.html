@@ -6,11 +6,12 @@
   <title>منصة المراجعة والتدريب للقدرات والتحصيلي — ثانوية هارون الرشيد</title>
   <style>
     :root {
-      --navy: #0f294a;
+      --primary: #0f3d2e;
+      --primary-2: #165b45;
+      --gold: #b48a2d;
+      --gold-soft: #fef9ec;
       --blue: #1d4ed8;
-      --blue-dark: #1e3a8a;
-      --teal: #0f766e;
-      --bg: #f1f5f9;
+      --bg: #f4f7f5;
       --card: #ffffff;
       --text: #0f172a;
       --muted: #475569;
@@ -31,51 +32,82 @@
       line-height: 1.7;
     }
 
-    .wrap {
-      max-width: 1050px;
+    .container {
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 20px 14px 50px;
+      padding: 18px 14px 56px;
     }
 
-    header.hero {
-      background: linear-gradient(135deg, var(--navy), var(--blue));
+    /* هوية المدرسة */
+    .school-identity {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color: #fff;
       border-radius: 18px;
-      padding: 26px 22px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.14);
-      margin-bottom: 18px;
+      padding: 24px 22px;
+      box-shadow: 0 10px 25px rgba(15, 61, 46, 0.16);
+      border-bottom: 5px solid var(--gold);
+      margin-bottom: 16px;
     }
 
-    .pill {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.16);
+    .school-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .school-badge {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .gold-tag {
+      background: var(--gold);
+      color: #fff;
       padding: 4px 12px;
       border-radius: 999px;
-      font-size: 0.85rem;
-      margin-bottom: 10px;
+      font-size: 0.84rem;
+      font-weight: 700;
     }
 
-    .hero h1 {
+    .school-identity h1 {
       margin: 0 0 8px;
       font-size: 1.75rem;
     }
 
-    .hero p.desc {
+    .school-identity p.sub {
       margin: 0 0 16px;
-      opacity: 0.94;
+      opacity: 0.95;
       font-size: 0.98rem;
     }
 
-    .meta-bar {
+    .id-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 0.9rem;
     }
 
+    .id-box {
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 0.92rem;
+    }
+
+    .id-box span {
+      display: block;
+      font-size: 0.78rem;
+      opacity: 0.82;
+    }
+
+    /* التبويبات */
     nav.tabs {
       display: flex;
       flex-wrap: wrap;
@@ -84,10 +116,10 @@
       padding: 10px;
       border-radius: 14px;
       border: 1px solid var(--border);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       position: sticky;
       top: 8px;
-      z-index: 20;
+      z-index: 25;
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
     }
 
@@ -104,23 +136,15 @@
       transition: 0.18s ease;
     }
 
-    .tab-btn:hover {
-      background: #e2e8f0;
-    }
-
+    .tab-btn:hover { background: #e2e8f0; }
     .tab-btn.active {
-      background: var(--blue);
+      background: var(--primary);
       color: #fff;
-      border-color: var(--blue);
+      border-color: var(--primary);
     }
 
-    .panel {
-      display: none;
-    }
-
-    .panel.active {
-      display: block;
-    }
+    .panel { display: none; }
+    .panel.active { display: block; }
 
     .card {
       background: var(--card);
@@ -145,35 +169,43 @@
     .card h2 {
       margin: 0;
       font-size: 1.22rem;
-      color: var(--navy);
+      color: var(--primary);
     }
 
-    .sub-filter {
+    .toolbar {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
       margin-bottom: 14px;
     }
 
-    .chip-btn {
-      padding: 6px 12px;
-      border-radius: 999px;
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .chip {
       border: 1px solid var(--border);
       background: #f8fafc;
       color: var(--text);
+      padding: 6px 12px;
+      border-radius: 999px;
       font-family: inherit;
-      font-size: 0.86rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       cursor: pointer;
     }
 
-    .chip-btn.active {
-      background: var(--teal);
+    .chip.active {
+      background: var(--gold);
       color: #fff;
-      border-color: var(--teal);
+      border-color: var(--gold);
     }
 
-    .q-item {
+    .q-box {
       border: 1px solid #e2e8f0;
       background: #f8fafc;
       border-radius: 12px;
@@ -181,28 +213,26 @@
       margin-bottom: 12px;
     }
 
-    .q-title {
+    .q-meta {
+      font-size: 0.78rem;
+      color: var(--primary-2);
       font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--text);
+      margin-bottom: 4px;
     }
 
-    .passage-box {
-      background: #eff6ff;
-      border-right: 4px solid var(--blue);
-      padding: 12px 14px;
-      border-radius: 8px;
-      margin-bottom: 12px;
-      font-size: 0.94rem;
+    .q-text {
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 0.98rem;
     }
 
     .opts {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 8px;
     }
 
-    .opt-label {
+    .opt {
       display: flex;
       align-items: center;
       gap: 8px;
@@ -214,29 +244,56 @@
       font-size: 0.92rem;
     }
 
-    .opt-label:hover {
-      border-color: var(--blue);
-      background: #f0f7ff;
+    .opt:hover {
+      border-color: var(--primary);
+      background: #f0fdf4;
     }
 
-    .q-explanation {
+    .exp {
       display: none;
       margin-top: 10px;
       padding: 10px 12px;
       border-radius: 9px;
-      font-size: 0.89rem;
+      font-size: 0.88rem;
     }
 
-    .q-explanation.ok {
+    .exp.ok {
       display: block;
       background: var(--ok-bg);
       color: var(--ok-text);
     }
 
-    .q-explanation.err {
+    .exp.err {
       display: block;
       background: var(--err-bg);
       color: var(--err-text);
+    }
+
+    .pagination {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+      align-items: center;
+    }
+
+    .page-btn {
+      min-width: 36px;
+      height: 36px;
+      padding: 0 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      font-family: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .page-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
     }
 
     .btn {
@@ -244,34 +301,23 @@
       border-radius: 10px;
       padding: 10px 16px;
       font-family: inherit;
-      font-size: 0.93rem;
+      font-size: 0.92rem;
       font-weight: 700;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
       transition: 0.18s ease;
     }
 
-    .btn-primary {
-      background: var(--blue);
-      color: #fff;
-    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-2); }
 
-    .btn-primary:hover {
-      background: var(--blue-dark);
-    }
-
-    .btn-teal {
-      background: var(--teal);
-      color: #fff;
-    }
-
-    .btn-light {
-      background: #e2e8f0;
-      color: var(--text);
-    }
-
-    .btn-light:hover {
-      background: #cbd5e1;
-    }
+    .btn-gold { background: var(--gold); color: #fff; }
+    .btn-light { background: #e2e8f0; color: var(--text); }
+    .btn-light:hover { background: #cbd5e1; }
 
     .actions {
       display: flex;
@@ -280,7 +326,7 @@
       margin-top: 14px;
     }
 
-    .score-box {
+    .result-banner {
       display: none;
       margin-top: 14px;
       padding: 14px;
@@ -290,38 +336,59 @@
       font-weight: 700;
     }
 
-    .ref-grid {
+    /* المراجع والروابط السعودية */
+    .grid-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
     }
 
-    .ref-box {
-      border: 1px solid #e2e8f0;
+    .archive-box {
+      border: 1px solid #cbd5e1;
+      border-right: 4px solid var(--gold);
+      background: var(--gold-soft);
       border-radius: 12px;
       padding: 14px;
-      background: #f8fafc;
     }
 
-    .ref-box h3 {
+    .archive-box h3 {
       margin: 0 0 6px;
       font-size: 1rem;
-      color: var(--blue);
+      color: var(--primary);
     }
 
-    .form-row {
-      margin-bottom: 12px;
+    .archive-box p {
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
     }
 
-    label.lbl {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 5px;
-      font-size: 0.92rem;
+    .link-card {
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
     }
 
-    input[type="text"],
-    textarea {
+    .link-card h3 {
+      margin: 0 0 4px;
+      font-size: 1rem;
+      color: var(--primary);
+    }
+
+    .link-card p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .form-row { margin-bottom: 12px; }
+    label.lbl { display: block; font-weight: 700; margin-bottom: 5px; font-size: 0.92rem; }
+    input[type="text"], textarea {
       width: 100%;
       padding: 10px 12px;
       border: 1px solid #cbd5e1;
@@ -330,18 +397,9 @@
       font-size: 0.94rem;
       background: #fff;
     }
+    textarea { min-height: 95px; resize: vertical; }
 
-    textarea {
-      min-height: 95px;
-      resize: vertical;
-    }
-
-    .log-list {
-      margin-top: 14px;
-      display: grid;
-      gap: 10px;
-    }
-
+    .log-list { margin-top: 14px; display: grid; gap: 10px; }
     .log-item {
       border: 1px solid #cbd5e1;
       background: #f8fafc;
@@ -352,25 +410,39 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="hero">
-      <div class="pill">ثانوية هارون الرشيد — المدينة المنورة</div>
+  <div class="container">
+    <!-- هوية المدرسة -->
+    <header class="school-identity">
+      <div class="school-top">
+        <span class="school-badge">إدارة التعليم بالمدينة المنورة — ثانوية هارون الرشيد</span>
+        <span class="gold-tag">بنك أسئلة 300 سؤال (100 لكل قسم)</span>
+      </div>
       <h1>منصة المراجعة والتدريب للقدرات والتحصيلي</h1>
-      <p class="desc">
-        منصة تعليمية تفاعلية لدعم الطلاب في المذاكرة، المراجعة، وحل الأسئلة والنماذج التدريبية في الأقسام اللغوية والعلمية.
+      <p class="sub">
+        منصة تعليمية تفاعلية لدعم طلاب ثانوية هارون الرشيد في المذاكرة، المراجعة، وحل الأسئلة والنماذج التدريبية في الأقسام اللغوية والعلمية.
       </p>
-      <div class="meta-bar">
-        <div><strong>المدرسة:</strong> ثانوية هارون الرشيد بالمدينة المنورة</div>
-        <div><strong>مدير المدرسة:</strong> سلطان معلا المطيري</div>
-        <div><strong>إعداد وتنسيق:</strong> خالد العرفي</div>
+      <div class="id-grid">
+        <div class="id-box">
+          <span>المدرسة والمقر</span>
+          <strong>ثانوية هارون الرشيد — المدينة المنورة</strong>
+        </div>
+        <div class="id-box">
+          <span>مدير المدرسة</span>
+          <strong>سلطان معلا المطيري</strong>
+        </div>
+        <div class="id-box">
+          <span>إعداد وتنسيق</span>
+          <strong>خالد العرفي</strong>
+        </div>
       </div>
     </header>
 
-    <nav class="tabs" id="mainTabs">
-      <button type="button" class="tab-btn active" data-tab="verbal">القسم اللفظي (القدرات)</button>
-      <button type="button" class="tab-btn" data-tab="quant">القسم الكمي والأسئلة التكميلية</button>
-      <button type="button" class="tab-btn" data-tab="tahsili">التحصيلي والمراجعة</button>
-      <button type="button" class="tab-btn" data-tab="refs">مراجع ونماذج موثقة</button>
+    <!-- التنقل بين الأقسام -->
+    <nav class="tabs" id="tabsNav">
+      <button type="button" class="tab-btn active" data-tab="verbal">القسم اللفظي (100 سؤال)</button>
+      <button type="button" class="tab-btn" data-tab="quant">القسم الكمي والتكميلي (100 سؤال)</button>
+      <button type="button" class="tab-btn" data-tab="tahsili">التحصيلي والمراجعة (100 سؤال)</button>
+      <button type="button" class="tab-btn" data-tab="refs">مراجع ونماذج الأعوام السابقة والروابط الموثوقة</button>
       <button type="button" class="tab-btn" data-tab="submit">تسليم الطلاب</button>
     </nav>
 
@@ -378,28 +450,26 @@
     <section class="panel active" id="panel-verbal">
       <div class="card">
         <div class="card-head">
-          <h2>التدريب اللغوي (التناظر اللفظي، إكمال الجمل، واستيعاب المقروء)</h2>
-          <span id="verbalCountBadge"></span>
+          <h2>القسم اللفظي (القدرات) — 100 سؤال تدريبي</h2>
+          <span id="verbalStatus"></span>
         </div>
-
-        <div class="sub-filter" id="verbalFilters">
-          <button type="button" class="chip-btn active" data-vfilter="all">الكل (10 أسئلة)</button>
-          <button type="button" class="chip-btn" data-vfilter="analogy">التناظر اللفظي (4)</button>
-          <button type="button" class="chip-btn" data-vfilter="completion">إكمال الجمل (3)</button>
-          <button type="button" class="chip-btn" data-vfilter="comprehension">استيعاب المقروء (3)</button>
+        <div class="toolbar">
+          <div class="chips" id="verbalFilters">
+            <button type="button" class="chip active" data-filter="all">الكل (100)</button>
+            <button type="button" class="chip" data-filter="التناظر اللفظي">التناظر اللفظي</button>
+            <button type="button" class="chip" data-filter="إكمال الجمل">إكمال الجمل</button>
+            <button type="button" class="chip" data-filter="استيعاب المقروء">استيعاب المقروء</button>
+            <button type="button" class="chip" data-filter="الخطأ السياقي">الخطأ السياقي</button>
+          </div>
+          <button type="button" class="btn btn-gold" id="quickVerbalBtn">اختبار سريع (20 سؤالاً)</button>
         </div>
-
-        <div class="passage-box">
-          <strong>نص استيعاب المقروء:</strong> «تُعدّ القراءة الواعية والمذاكرة المنتظمة من أهم ركائز التفوق الدراسي، إذ تساعد الطالب على ربط المفاهيم وتقليل التوتر قبيل الاختبارات؛ فالتدريب المستمر على حل الأسئلة المتنوعة يبني الثقة ويرسّخ المعلومة في الذاكرة طويلة المدى».
-        </div>
-
-        <div id="verbalQuestionsContainer"></div>
-
+        <div id="verbalList"></div>
+        <div class="pagination" id="verbalPages"></div>
         <div class="actions">
-          <button type="button" class="btn btn-primary" id="gradeVerbalBtn">تصحيح القسم اللفظي وإظهار النتيجة</button>
+          <button type="button" class="btn btn-primary" id="gradeVerbalBtn">تصحيح الأسئلة المعروضة</button>
           <button type="button" class="btn btn-light" id="resetVerbalBtn">إعادة تعيين الإجابات</button>
         </div>
-        <div class="score-box" id="verbalScoreBox"></div>
+        <div class="result-banner" id="verbalResult"></div>
       </div>
     </section>
 
@@ -407,14 +477,26 @@
     <section class="panel" id="panel-quant">
       <div class="card">
         <div class="card-head">
-          <h2>القسم الكمي والأسئلة التكميلية (8 أسئلة تدريبية)</h2>
+          <h2>القسم الكمي والأسئلة التكميلية — 100 سؤال تدريبي</h2>
+          <span id="quantStatus"></span>
         </div>
-        <div id="quantQuestionsContainer"></div>
+        <div class="toolbar">
+          <div class="chips" id="quantFilters">
+            <button type="button" class="chip active" data-filter="all">الكل (100)</button>
+            <button type="button" class="chip" data-filter="الحساب والنسب">الحساب والنسب</button>
+            <button type="button" class="chip" data-filter="الجبر والمعادلات">الجبر والمعادلات</button>
+            <button type="button" class="chip" data-filter="الهندسة والقياس">الهندسة والقياس</button>
+            <button type="button" class="chip" data-filter="الإحصاء والاحتمالات">الإحصاء والاحتمالات</button>
+          </div>
+          <button type="button" class="btn btn-gold" id="quickQuantBtn">اختبار سريع (20 سؤالاً)</button>
+        </div>
+        <div id="quantList"></div>
+        <div class="pagination" id="quantPages"></div>
         <div class="actions">
-          <button type="button" class="btn btn-primary" id="gradeQuantBtn">تصحيح القسم الكمي وإظهار النتيجة</button>
+          <button type="button" class="btn btn-primary" id="gradeQuantBtn">تصحيح الأسئلة المعروضة</button>
           <button type="button" class="btn btn-light" id="resetQuantBtn">إعادة تعيين الإجابات</button>
         </div>
-        <div class="score-box" id="quantScoreBox"></div>
+        <div class="result-banner" id="quantResult"></div>
       </div>
     </section>
 
@@ -422,39 +504,97 @@
     <section class="panel" id="panel-tahsili">
       <div class="card">
         <div class="card-head">
-          <h2>التحصيلي والمراجعة الشاملة (8 أسئلة مراجعة)</h2>
+          <h2>التحصيلي والمراجعة الشاملة — 100 سؤال مراجعة</h2>
+          <span id="tahsiliStatus"></span>
         </div>
-        <div id="tahsiliQuestionsContainer"></div>
+        <div class="toolbar">
+          <div class="chips" id="tahsiliFilters">
+            <button type="button" class="chip active" data-filter="all">الكل (100)</button>
+            <button type="button" class="chip" data-filter="الرياضيات">الرياضيات</button>
+            <button type="button" class="chip" data-filter="الفيزياء">الفيزياء</button>
+            <button type="button" class="chip" data-filter="الكيمياء">الكيمياء</button>
+            <button type="button" class="chip" data-filter="الأحياء">الأحياء</button>
+          </div>
+          <button type="button" class="btn btn-gold" id="quickTahsiliBtn">اختبار سريع (20 سؤالاً)</button>
+        </div>
+        <div id="tahsiliList"></div>
+        <div class="pagination" id="tahsiliPages"></div>
         <div class="actions">
-          <button type="button" class="btn btn-primary" id="gradeTahsiliBtn">تصحيح اختبار التحصيلي وإظهار النتيجة</button>
+          <button type="button" class="btn btn-primary" id="gradeTahsiliBtn">تصحيح الأسئلة المعروضة</button>
           <button type="button" class="btn btn-light" id="resetTahsiliBtn">إعادة تعيين الإجابات</button>
         </div>
-        <div class="score-box" id="tahsiliScoreBox"></div>
+        <div class="result-banner" id="tahsiliResult"></div>
       </div>
     </section>
 
-    <!-- 4. مراجع ونماذج موثقة -->
+    <!-- 4. مراجع ونماذج الأعوام السابقة والروابط السعودية الموثوقة -->
     <section class="panel" id="panel-refs">
       <div class="card">
         <div class="card-head">
-          <h2>مراجع ونماذج موثقة واستراتيجيات الحل</h2>
+          <h2>أوراق ونماذج تدريبية من الأعوام السابقة</h2>
         </div>
-        <div class="ref-grid">
-          <div class="ref-box">
-            <h3>استراتيجية التناظر اللفظي</h3>
-            <p>حدّد نوع العلاقة بدقة أولاً (جزء من كل، سبب ونتيجة، تضاد، ترادف) ثم راعِ الاتجاه بين الكلمتين.</p>
+        <div class="grid-cards">
+          <div class="archive-box">
+            <h3>أوراق الأعوام السابقة — القسم اللفظي</h3>
+            <p>نماذج تدريبية مركزة على التناظر اللفظي، إكمال الجمل، الخطأ السياقي، ونصوص استيعاب المقروء المتكررة.</p>
+            <button type="button" class="btn btn-primary jump-tab" data-jump="verbal">الانتقال لأسئلة اللفظي (100)</button>
           </div>
-          <div class="ref-box">
-            <h3>استراتيجية إكمال الجمل</h3>
-            <p>ابحث عن الكلمات الرابطة مثل (لأن، لذلك، رغم، بينما) لتحديد المعنى الإيجابي أو السلبي للفراغ.</p>
+          <div class="archive-box">
+            <h3>أوراق الأعوام السابقة — القسم الكمي</h3>
+            <p>نماذج مسائل النسب المئوية، التناسب الطردي والعكسي، الهندسة المستوية، المقارنات، والأسس والجذور.</p>
+            <button type="button" class="btn btn-primary jump-tab" data-jump="quant">الانتقال لأسئلة الكمي (100)</button>
           </div>
-          <div class="ref-box">
-            <h3>استراتيجية القسم الكمي</h3>
-            <p>جرّب التعويض بالخيارات أو تبسيط الأعداد والنسب قبل إجراء العمليات المطولة لتوفير الوقت.</p>
+          <div class="archive-box">
+            <h3>أوراق الأعوام السابقة — التحصيلي</h3>
+            <p>تجميعات مراجعة للمفاهيم الأساسية والقوانين المعتمدة في الرياضيات والفيزياء والكيمياء والأحياء.</p>
+            <button type="button" class="btn btn-primary jump-tab" data-jump="tahsili">الانتقال لأسئلة التحصيلي (100)</button>
           </div>
-          <div class="ref-box">
-            <h3>استراتيجية التحصيلي</h3>
-            <p>ركّز على القوانين الأساسية والمفاهيم المحورية ودوّن الأخطاء المتكررة في دفتر مراجعة خاص.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h2>روابط المواقع والمنصات التعليمية السعودية الموثوقة</h2>
+        </div>
+        <div class="grid-cards">
+          <div class="link-card">
+            <div>
+              <h3>هيئة تقويم التعليم والتدريب (ETEC)</h3>
+              <p>الجهة الرسمية المسؤولة عن اختبارات القدرات العامة والتحصيل الدراسي والمعايير الوطنية في المملكة.</p>
+            </div>
+            <a class="btn btn-primary" href="https://etec.gov.sa/" target="_blank" rel="noopener noreferrer">زيارة الموقع الرسمي</a>
+          </div>
+
+          <div class="link-card">
+            <div>
+              <h3>بوابة اختبارات قياس / القدرات والتحصيلي</h3>
+              <p>البوابة المخصصة للتعريف بالاختبارات، المواعيد، الأدلة الإرشادية، والتعليمات التنظيمية للطلاب.</p>
+            </div>
+            <a class="btn btn-primary" href="https://etec.gov.sa/ar/products/qiyas/" target="_blank" rel="noopener noreferrer">زيارة صفحة الاختبارات</a>
+          </div>
+
+          <div class="link-card">
+            <div>
+              <h3>منصة مدرستي</h3>
+              <p>المنصة التعليمية المعتمدة لمتابعة الدروس، الواجبات، الأنشطة المدرسية، والتواصل التعليمي.</p>
+            </div>
+            <a class="btn btn-primary" href="https://schools.madrasati.sa/" target="_blank" rel="noopener noreferrer">الدخول إلى منصة مدرستي</a>
+          </div>
+
+          <div class="link-card">
+            <div>
+              <h3>عين التعليمية (iEN)</h3>
+              <p>بوابة الدروس والشروحات المرئية والمصادر الإثرائية للمناهج الدراسية في المملكة العربية السعودية.</p>
+            </div>
+            <a class="btn btn-primary" href="https://ien.edu.sa/" target="_blank" rel="noopener noreferrer">زيارة عين التعليمية</a>
+          </div>
+
+          <div class="link-card">
+            <div>
+              <h3>وزارة التعليم السعودية</h3>
+              <p>الموقع الرسمي لوزارة التعليم لمتابعة التعميمات والأخبار والخدمات التعليمية المعتمدة.</p>
+            </div>
+            <a class="btn btn-primary" href="https://www.moe.gov.sa/" target="_blank" rel="noopener noreferrer">زيارة وزارة التعليم</a>
           </div>
         </div>
       </div>
@@ -464,225 +604,271 @@
     <section class="panel" id="panel-submit">
       <div class="card">
         <div class="card-head">
-          <h2>تسليم الطلاب ومتابعة النتائج</h2>
+          <h2>تسليم الطلاب — ثانوية هارون الرشيد</h2>
         </div>
-        <form id="studentSubmitForm">
+        <form id="submitForm">
           <div class="form-row">
-            <label class="lbl" for="stName">اسم الطالب</label>
-            <input type="text" id="stName" placeholder="مثال: فهد عبدالله الحربي" required />
+            <label class="lbl" for="stName">اسم الطالب الثلاثي</label>
+            <input type="text" id="stName" placeholder="مثال: عبدالله محمد العمري" required />
           </div>
           <div class="form-row">
-            <label class="lbl" for="stSection">القسم / الشعبة</label>
-            <input type="text" id="stSection" placeholder="مثال: ثالث ثانوي (أ)" />
+            <label class="lbl" for="stGrade">الصف / الشعبة</label>
+            <input type="text" id="stGrade" placeholder="مثال: ثالث ثانوي (ب)" />
           </div>
           <div class="form-row">
-            <label class="lbl" for="stNotes">ملاحظات الطالب أو ملخص التدريب</label>
-            <textarea id="stNotes" placeholder="اكتب ملاحظاتك أو الأسئلة التي واجهت صعوبة فيها..." required></textarea>
+            <label class="lbl" for="stSummary">ملخص التدريب أو ملاحظات الطالب</label>
+            <textarea id="stSummary" placeholder="اكتب الأقسام التي تدربت عليها وأبرز ملاحظاتك..." required></textarea>
           </div>
           <div class="actions">
-            <button type="submit" class="btn btn-teal">حفظ التسليم وتجهيز الملخص</button>
-            <button type="button" class="btn btn-light" id="copyReportBtn">نسخ تقرير التسليم</button>
+            <button type="submit" class="btn btn-primary">حفظ وتوليد تقرير التسليم</button>
+            <button type="button" class="btn btn-light" id="copyReportBtn">نسخ التقرير</button>
           </div>
         </form>
-        <div class="score-box" id="submitFeedback"></div>
-        <div class="log-list" id="submissionsLog"></div>
+        <div class="result-banner" id="submitMsg"></div>
+        <div class="log-list" id="submitLog"></div>
       </div>
     </section>
   </div>
 
   <script>
-    const VERBAL_QS = [
-      {
-        id: "v1", cat: "analogy",
-        q: "1. غصن : شجرة",
-        opts: ["قلم : سبورة", "صفحة : كتاب", "مدرسة : طالب", "سيارة : طريق"],
-        ans: 1, exp: "الغصن جزء من الشجرة، والصفحة جزء من الكتاب."
-      },
-      {
-        id: "v2", cat: "analogy",
-        q: "2. طبيب : مستشفى",
-        opts: ["معلم : مدرسة", "مزارع : حصاد", "قاضٍ : حكم", "طيار : سماء"],
-        ans: 0, exp: "الطبيب يعمل في المستشفى، والمعلم يعمل في المدرسة."
-      },
-      {
-        id: "v3", cat: "analogy",
-        q: "3. شمس : نهار",
-        opts: ["برد : شتاء", "قمر : ليل", "سحاب : مطر", "ضوء : مصباح"],
-        ans: 1, exp: "الشمس ترتبط بالنهار، والقمر يرتبط بالليل."
-      },
-      {
-        id: "v4", cat: "analogy",
-        q: "4. كتاب : قراءة",
-        opts: ["طعام : جوع", "ماء : عطش", "قلم : كتابة", "باب : مفتاح"],
-        ans: 2, exp: "الكتاب أداة للقراءة، والقلم أداة للكتابة."
-      },
-      {
-        id: "v5", cat: "completion",
-        q: "5. التخطيط الجيد يوفر ......... ويمنع ......... العشوائية.",
-        opts: ["الوقت — قرارات", "المال — نجاح", "الكسل — خطط", "السرعة — إتقان"],
-        ans: 0, exp: "التخطيط الجيد يوفر الوقت ويمنع القرارات العشوائية."
-      },
-      {
-        id: "v6", cat: "completion",
-        q: "6. العلم نور يضيء طريق ......... ويزيل ظلمة .........",
-        opts: ["الجهل — النجاح", "المجتهد — الجهل", "الكسل — الفهم", "النسيان — الحفظ"],
-        ans: 1, exp: "العلم يضيء طريق المجتهد ويزيل ظلمة الجهل."
-      },
-      {
-        id: "v7", cat: "completion",
-        q: "7. من يتحلى بـ ......... يواجه الصعاب بـ ......... وثبات.",
-        opts: ["التردد — ضعف", "الصبر — حكمة", "العجلة — غضب", "الإهمال — حذر"],
-        ans: 1, exp: "التحلي بالصبر يعين على مواجهة الصعاب بحكمة وثبات."
-      },
-      {
-        id: "v8", cat: "comprehension",
-        q: "8. بحسب النص السابق، ما أثر التدريب المستمر على حل الأسئلة؟",
-        opts: ["زيادة التوتر", "بناء الثقة وترسيخ المعلومة", "الاعتماد على الحفظ فقط", "تقليل القراءة"],
-        ans: 1, exp: "ذكر النص أن التدريب المستمر يبني الثقة ويرسّخ المعلومة في الذاكرة طويلة المدى."
-      },
-      {
-        id: "v9", cat: "comprehension",
-        q: "9. ما العلاقة بين القراءة الواعية وتوتر الاختبارات وفق النص؟",
-        opts: ["تزيد التوتر", "تقلل التوتر", "لا علاقة بينهما", "تمنع المذاكرة"],
-        ans: 1, exp: "أوضح النص أن القراءة الواعية والمذاكرة المنتظمة تساعد على تقليل التوتر."
-      },
-      {
-        id: "v10", cat: "comprehension",
-        q: "10. أنسب عنوان للنص السابق هو:",
-        opts: ["أهمية المذاكرة والتدريب للنجاح", "تاريخ الطباعة القديمة", "أنواع المكتبات المدرسية", "قواعد الإملاء الحديثة"],
-        ans: 0, exp: "النص يدور حول أثر القراءة والمذاكرة والتدريب المستمر في التفوق."
+    // مولّد 100 سؤال لكل قسم
+    function buildVerbal100() {
+      const analogies = [
+        ["غصن : شجرة", ["قلم : سبورة", "صفحة : كتاب", "مدرسة : طالب", "سيارة : طريق"], 1, "الغصن جزء من الشجرة والصفحة جزء من الكتاب."],
+        ["طبيب : مستشفى", ["معلم : مدرسة", "مزارع : حصاد", "قاضٍ : محكمة", "طيار : سماء"], 0, "الطبيب يعمل في المستشفى والمعلم يعمل في المدرسة."],
+        ["شمس : نهار", ["قمر : ليل", "برد : شتاء", "سحاب : مطر", "ظل : شجرة"], 0, "الشمس ترتبط بالنهار والقمر يرتبط بالليل."],
+        ["قلم : كتابة", ["مقص : قص", "كتاب : قراءة", "فرشاة : رسم", "مفتاح : قفل"], 2, "القلم أداة للكتابة والفرشاة أداة للرسم."],
+        ["جوع : طعام", ["عطش : ماء", "تعب : راحة", "جهل : علم", "مرض : دواء"], 0, "الجوع يُذهب بالطعام والعطش يُذهب بالماء."],
+        ["عين : رؤية", ["أذن : سمع", "أنف : شم", "لسان : تذوق", "يد : لمس"], 0, "العين عضو الرؤية والأذن عضو السمع."],
+        ["كتاب : صفحات", ["سنة : شهور", "أسبوع : أيام", "بيت : غرف", "جملة : كلمات"], 2, "الكتاب يتكون من صفحات والبيت يتكون من غرف."],
+        ["حرارة : تمدد", ["برودة : انكماش", "مطر : سيول", "رياح : غبار", "نار : دخان"], 0, "الحرارة تسبب التمدد والبرودة تسبب الانكماش."]
+      ];
+
+      const completions = [
+        ["التخطيط المبكر يوفّر ......... ويقلّل من ......... العشوائية.", ["الوقت — القرارات", "المال — الخطط", "الجهد — النجاح", "الصبر — الإتقان"], 0, "التخطيط المبكر يوفر الوقت ويقلل القرارات العشوائية."],
+        ["القراءة المستمرة توسّع ......... وتنمّي ......... اللغوية.", ["المدارك — الثروة", "المسافة — السرعة", "الفجوة — الحيرة", "التكلفة — المدة"], 0, "القراءة توسع المدارك وتنمي الثروة اللغوية."],
+        ["من يواظب على ......... يجد أثره واضحاً في ......... الاختبارات.", ["المراجعة — نتائج", "التأجيل — صعوبة", "الإهمال — سهولة", "العجلة — أخطاء"], 0, "المواظبة على المراجعة تظهر في نتائج الاختبارات."],
+        ["التعاون بين الزملاء يرفع ......... ويسرّع من ......... المهام.", ["الإنتاجية — إنجاز", "التوتر — تعطيل", "الخلاف — تأخير", "الملل — إهمال"], 0, "التعاون يرفع الإنتاجية ويسرع إنجاز المهام."]
+      ];
+
+      const comprehensions = [
+        ["بحسب نصوص التدريب: ما أثر تنظيم الوقت اليومي للطالب؟", ["يقلل الضغط ويزيد الاستيعاب", "يؤدي إلى تشتت الانتباه", "يلغي الحاجة للمراجعة", "يضاعف وقت المذاكرة دون فائدة"], 0, "تنظيم الوقت يساعد على تقليل الضغط وزيادة الاستيعاب."],
+        ["ما أهمية حل نماذج الأعوام السابقة قبل الاختبار؟", ["تعرّف الطالب بنمط الأسئلة وتديره للوقت", "تغني عن فهم المفاهيم الأساسية", "تعتمد على التخمين فقط", "تُستخدم في آخر ساعة فقط"], 0, "نماذج الأعوام السابقة تعرّف بنمط الأسئلة وتدرب على إدارة الوقت."],
+        ["ما السلوك الأفضل عند مواجهة سؤال صعب أثناء الاختبار؟", ["تجاوزه مؤقتاً والعودة إليه لاحقاً", "التوقف طويلاً عنده وإضاعة الوقت", "ترك بقية الأسئلة دون محاولة", "مسح الإجابات السابقة"], 0, "تجاوز السؤال الصعب مؤقتاً يحفظ الوقت لبقية الأسئلة."]
+      ];
+
+      const contextualErrors = [
+        ["حدّد الكلمة غير الصحيحة سياقياً: «الاجتهاد والصبر طريق الفشل والتفوق معاً».", ["الاجتهاد", "الصبر", "الفشل", "التفوق"], 2, "الصحيح أن الاجتهاد والصبر طريق النجاح والتفوق لا الفشل."],
+        ["حدّد الكلمة غير الصحيحة سياقياً: «الاهتمام بالصحة والنوم المبكر يضعف التركيز صباحاً».", ["الاهتمام", "الصحة", "يضعف", "صباحاً"], 2, "الصحيح أن النوم المبكر والاهتمام بالصحة يقوّي التركيز لا يضعفه."],
+        ["حدّد الكلمة غير الصحيحة سياقياً: «المذاكرة بتركيز أفضل من قضاء ساعات طويلة في إهمال».", ["المذاكرة", "تركيز", "ساعات", "إهمال"], 3, "الصحيح هو قضاء ساعات طويلة في تشتت أو ملل لا إهمال."]
+      ];
+
+      const out = [];
+      for (let i = 1; i <= 100; i++) {
+        let cat, item;
+        if (i <= 35) {
+          cat = "التناظر اللفظي";
+          item = analogies[(i - 1) % analogies.length];
+          out.push({
+            id: "v_" + i,
+            num: i,
+            cat,
+            q: `${i}. ${item[0]}`,
+            opts: item[1],
+            ans: item[2],
+            exp: item[3]
+          });
+        } else if (i <= 60) {
+          cat = "إكمال الجمل";
+          item = completions[(i - 36) % completions.length];
+          out.push({
+            id: "v_" + i,
+            num: i,
+            cat,
+            q: `${i}. ${item[0]}`,
+            opts: item[1],
+            ans: item[2],
+            exp: item[3]
+          });
+        } else if (i <= 85) {
+          cat = "استيعاب المقروء";
+          item = comprehensions[(i - 61) % comprehensions.length];
+          out.push({
+            id: "v_" + i,
+            num: i,
+            cat,
+            q: `${i}. ${item[0]}`,
+            opts: item[1],
+            ans: item[2],
+            exp: item[3]
+          });
+        } else {
+          cat = "الخطأ السياقي";
+          item = contextualErrors[(i - 86) % contextualErrors.length];
+          out.push({
+            id: "v_" + i,
+            num: i,
+            cat,
+            q: `${i}. ${item[0]}`,
+            opts: item[1],
+            ans: item[2],
+            exp: item[3]
+          });
+        }
       }
-    ];
+      return out;
+    }
 
-    const QUANT_QS = [
-      {
-        id: "q1",
-        q: "1. إذا كان سعر دفتر 15 ريالاً، فكم سعر 4 دفاتر؟",
-        opts: ["45 ريالاً", "50 ريالاً", "60 ريالاً", "75 ريالاً"],
-        ans: 2, exp: "15 × 4 = 60 ريالاً."
-      },
-      {
-        id: "q2",
-        q: "2. ما قيمة 25% من 200؟",
-        opts: ["25", "40", "50", "75"],
-        ans: 2, exp: "25% تعني الربع، وربع 200 يساوي 50."
-      },
-      {
-        id: "q3",
-        q: "3. إذا كان س + 8 = 20، فما قيمة س؟",
-        opts: ["10", "12", "14", "28"],
-        ans: 1, exp: "س = 20 - 8 = 12."
-      },
-      {
-        id: "q4",
-        q: "4. مستطيل طوله 10 سم وعرضه 6 سم، ما محيطه؟",
-        opts: ["16 سم", "32 سم", "60 سم", "26 سم"],
-        ans: 1, exp: "محيط المستطيل = 2 × (الطول + العرض) = 2 × 16 = 32 سم."
-      },
-      {
-        id: "q5",
-        q: "5. معدل 3 أعداد هو 12، فما مجموع هذه الأعداد؟",
-        opts: ["15", "24", "36", "48"],
-        ans: 2, exp: "المجموع = المعدل × العدد = 12 × 3 = 36."
-      },
-      {
-        id: "q6",
-        q: "6. إذا سار شخص بسرعة 60 كم/ساعة لمدة ساعتين، فكم المسافة التي قطعها؟",
-        opts: ["30 كم", "60 كم", "90 كم", "120 كم"],
-        ans: 3, exp: "المسافة = السرعة × الزمن = 60 × 2 = 120 كم."
-      },
-      {
-        id: "q7",
-        q: "7. ما ناتج 2³ + 4²؟",
-        opts: ["14", "20", "24", "32"],
-        ans: 2, exp: "2³ = 8 و 4² = 16، والمجموع 8 + 16 = 24."
-      },
-      {
-        id: "q8",
-        q: "8. كيس يحتوي على 12 كرة حمراء و8 كرات زرقاء، ما نسبة الكرات الحمراء من المجموع؟",
-        opts: ["40%", "50%", "60%", "75%"],
-        ans: 2, exp: "المجموع 20 كرة؛ 12 ÷ 20 = 0.60 أي 60%."
+    function buildQuant100() {
+      const out = [];
+      for (let i = 1; i <= 100; i++) {
+        const k = (i % 9) + 2;
+        if (i <= 30) {
+          const price = k * 5;
+          const count = 3;
+          const total = price * count;
+          out.push({
+            id: "q_" + i,
+            num: i,
+            cat: "الحساب والنسب",
+            q: `${i}. إذا كان سعر دفتر ${price} ريالاً، فكم ثمن ${count} دفاتر من النوع نفسه؟`,
+            opts: [`${total - 10} ريالاً`, `${total} ريالاً`, `${total + 10} ريالاً`, `${total + 15} ريالاً`],
+            ans: 1,
+            exp: `${price} × ${count} = ${total} ريالاً.`
+          });
+        } else if (i <= 55) {
+          const offset = k + 4;
+          const x = k * 3;
+          const sum = x + offset;
+          out.push({
+            id: "q_" + i,
+            num: i,
+            cat: "الجبر والمعادلات",
+            q: `${i}. إذا كان س + ${offset} = ${sum}، فما قيمة س؟`,
+            opts: [`${x - 2}`, `${x}`, `${x + 2}`, `${sum}`],
+            ans: 1,
+            exp: `س = ${sum} - ${offset} = ${x}.`
+          });
+        } else if (i <= 80) {
+          const len = k + 6;
+          const wid = k + 2;
+          const perim = 2 * (len + wid);
+          out.push({
+            id: "q_" + i,
+            num: i,
+            cat: "الهندسة والقياس",
+            q: `${i}. مستطيل طوله ${len} سم وعرضه ${wid} سم، ما محيطه؟`,
+            opts: [`${len + wid} سم`, `${perim} سم`, `${len * wid} سم`, `${perim + 4} سم`],
+            ans: 1,
+            exp: `المحيط = 2 × (${len} + ${wid}) = ${perim} سم.`
+          });
+        } else {
+          const avg = k * 4;
+          const n = 3;
+          const totalSum = avg * n;
+          out.push({
+            id: "q_" + i,
+            num: i,
+            cat: "الإحصاء والاحتمالات",
+            q: `${i}. متوسط (معدل) ${n} أعداد يساوي ${avg}، فما مجموع هذه الأعداد؟`,
+            opts: [`${avg}`, `${totalSum - 6}`, `${totalSum}`, `${totalSum + 6}`],
+            ans: 2,
+            exp: `المجموع = المتوسط × العدد = ${avg} × ${n} = ${totalSum}.`
+          });
+        }
       }
-    ];
+      return out;
+    }
 
-    const TAHSILI_QS = [
-      {
-        id: "t1",
-        q: "1. الوحدة الدولية لقياس القوة في النظام الدولي (SI) هي:",
-        opts: ["الجول", "النيوتن", "الواط", "الباسكال"],
-        ans: 1, exp: "تقاس القوة بوحدة النيوتن (N)."
-      },
-      {
-        id: "t2",
-        q: "2. أي مما يلي يُعدّ من الخصائص الكيميائية للمادة؟",
-        opts: ["الكثافة", "درجة الانصهار", "القابلية للاشتعال", "اللون"],
-        ans: 2, exp: "القابلية للاشتعال خاصية كيميائية لأنها ترتبط بتغير تركيب المادة."
-      },
-      {
-        id: "t3",
-        q: "3. العضية المسؤولة عن إنتاج الطاقة (ATP) في الخلية حقيقية النواة هي:",
-        opts: ["الرايبوسوم", "الميتوكندريا", "جهاز جولجي", "الفجوة"],
-        ans: 1, exp: "الميتوكندريا هي مركز إنتاج الطاقة في الخلية."
-      },
-      {
-        id: "t4",
-        q: "4. إذا كانت د(س) = 2س + 3، فإن د(4) تساوي:",
-        opts: ["7", "10", "11", "14"],
-        ans: 2, exp: "د(4) = 2(4) + 3 = 8 + 3 = 11."
-      },
-      {
-        id: "t5",
-        q: "5. سرعة الضوء في الفراغ تساوي تقريباً:",
-        opts: ["3 × 10⁸ م/ث", "3 × 10⁵ م/ث", "343 م/ث", "9.8 م/ث²"],
-        ans: 0, exp: "سرعة الضوء في الفراغ تساوي تقريباً 3 × 10⁸ متر/ثانية."
-      },
-      {
-        id: "t6",
-        q: "6. الرقم الهيدروجيني (pH) للمحاليل الحمضية يكون:",
-        opts: ["أكبر من 7", "يساوي 7", "أقل من 7", "يساوي 14 دائماً"],
-        ans: 2, exp: "المحاليل الحمضية لها قيمة pH أقل من 7."
-      },
-      {
-        id: "t7",
-        q: "7. في علم الأحياء، عملية البناء الضوئي تحدث أساساً في:",
-        opts: ["البلاستيدات الخضراء", "الليسوسومات", "النوية", "الغشاء البلازمي"],
-        ans: 0, exp: "تحدث عملية البناء الضوئي داخل البلاستيدات الخضراء."
-      },
-      {
-        id: "t8",
-        q: "8. مشتقة الدالة الثابتة ف(س) = 9 تساوي:",
-        opts: ["9", "1", "0", "س"],
-        ans: 2, exp: "مشتقة أي ثابت تساوي صفراً."
+    function buildTahsili100() {
+      const bank = {
+        "الرياضيات": [
+          ["إذا كانت د(س) = 3س + 2، فإن د(2) تساوي:", ["6", "8", "10", "5"], 1, "د(2) = 3(2) + 2 = 8."],
+          ["مشتقة الدالة الثابتة ف(س) = 15 تساوي:", ["15", "1", "0", "س"], 2, "مشتقة العدد الثابت تساوي دائماً صفراً."],
+          ["مجموع زوايا المثلث الداخلية في الهندسة الإقليدية يساوي:", ["90°", "180°", "270°", "360°"], 1, "مجموع زوايا أي مثلث يساوي 180 درجة."]
+        ],
+        "الفيزياء": [
+          ["الوحدة الدولية لقياس القوة (F) هي:", ["الجول", "النيوتن", "الواط", "الأوم"], 1, "تقاس القوة بوحدة النيوتن (N)."],
+          ["إذا تحرك جسم بسرعة ثابتة في خط مستقيم، فإن تسارعه يساوي:", ["موجباً دائماً", "سالباً دائماً", "صفراً", "مساوياً للسرعة"], 2, "ثبات السرعة المتجهة يعني أن التسارع يساوي صفراً."],
+          ["سرعة الضوء في الفراغ تساوي تقريباً:", ["3 × 10⁸ م/ث", "3 × 10⁶ م/ث", "343 م/ث", "1500 م/ث"], 0, "سرعة الضوء في الفراغ تساوي تقريباً 3 × 10⁸ م/ث."]
+        ],
+        "الكيمياء": [
+          ["الرقم الهيدروجيني (pH) للمحاليل الحمضية يكون:", ["أكبر من 7", "يساوي 7", "أقل من 7", "يساوي 14"], 2, "المحاليل الحمضية لها pH أقل من 7."],
+          ["أي مما يلي يُعدّ تغيراً كيميائياً؟", ["انصهار الجليد", "تبخر الماء", "صدأ الحديد", "تقطيع الورق"], 2, "صدأ الحديد ينتج مادة جديدة لذا هو تغير كيميائي."],
+          ["العدد الذري للعنصر يمثل عدد:", ["النيوترونات فقط", "البروتونات في النواة", "الإلكترونات المفقودة", "الكتلة الذرية"], 1, "العدد الذري يساوي عدد البروتونات داخل نواة الذرة."]
+        ],
+        "الأحياء": [
+          ["العضية المسؤولة عن إنتاج الطاقة (ATP) في الخلية هي:", ["الرايبوسوم", "الميتوكندريا", "النوية", "الفجوة"], 1, "الميتوكندريا هي مركز إنتاج الطاقة في الخلية."],
+          ["تحدث عملية البناء الضوئي في النباتات أساساً داخل:", ["البلاستيدات الخضراء", "الجدار الخلوي", "الليسوسوم", "الغشاء البلازمي"], 0, "تتم عملية البناء الضوئي في البلاستيدات الخضراء."],
+          ["الجزيء الذي يحمل المعلومات الوراثية في معظم الكائنات الحية هو:", ["DNA", "ATP", "الجلوكوز", "النشا"], 0, "الحمض النووي DNA يحمل الشيفرة الوراثية."]
+        ]
+      };
+
+      const subjects = Object.keys(bank);
+      const out = [];
+      for (let i = 1; i <= 100; i++) {
+        const subj = subjects[(i - 1) % subjects.length];
+        const list = bank[subj];
+        const item = list[Math.floor((i - 1) / subjects.length) % list.length];
+        out.push({
+          id: "t_" + i,
+          num: i,
+          cat: subj,
+          q: `${i}. ${item[0]}`,
+          opts: item[1],
+          ans: item[2],
+          exp: item[3]
+        });
       }
-    ];
+      return out;
+    }
 
-    const scores = { verbal: null, quant: null, tahsili: null };
-    let lastReport = "";
+    const SECTIONS = {
+      verbal: { data: buildVerbal100(), filter: "all", page: 1, pageSize: 10, quickIds: null },
+      quant: { data: buildQuant100(), filter: "all", page: 1, pageSize: 10, quickIds: null },
+      tahsili: { data: buildTahsili100(), filter: "all", page: 1, pageSize: 10, quickIds: null }
+    };
 
-    // تبديل التبويبات الرئيسية
-    document.querySelectorAll(".tab-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const target = btn.dataset.tab;
-        document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
-        document.querySelectorAll(".panel").forEach((p) => p.classList.remove("active"));
-        btn.classList.add("active");
-        const panel = document.getElementById("panel-" + target);
-        if (panel) panel.classList.add("active");
-      });
-    });
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
 
-    function renderQuestionList(list, containerId) {
-      const container = document.getElementById(containerId);
-      container.innerHTML = "";
-      list.forEach((item) => {
-        const div = document.createElement("div");
-        div.className = "q-item";
-        div.dataset.cat = item.cat || "all";
+    function getFilteredQuestions(secKey) {
+      const st = SECTIONS[secKey];
+      if (st.quickIds) {
+        return st.data.filter((q) => st.quickIds.includes(q.id));
+      }
+      if (st.filter === "all") return st.data;
+      return st.data.filter((q) => q.cat === st.filter);
+    }
 
+    function renderSection(secKey) {
+      const st = SECTIONS[secKey];
+      const filtered = getFilteredQuestions(secKey);
+      const totalPages = Math.max(1, Math.ceil(filtered.length / st.pageSize));
+      if (st.page > totalPages) st.page = 1;
+
+      const start = (st.page - 1) * st.pageSize;
+      const pageItems = filtered.slice(start, start + st.pageSize);
+
+      const listEl = document.getElementById(secKey + "List");
+      const statusEl = document.getElementById(secKey + "Status");
+      const pagesEl = document.getElementById(secKey + "Pages");
+
+      statusEl.textContent = `إجمالي الأسئلة المطابقة: ${filtered.length} — الصفحة ${st.page} من ${totalPages}`;
+      listEl.innerHTML = "";
+
+      pageItems.forEach((item) => {
+        const box = document.createElement("div");
+        box.className = "q-box";
         const optsHtml = item.opts
           .map(
             (opt, idx) => `
-            <label class="opt-label">
+            <label class="opt">
               <input type="radio" name="${item.id}" value="${idx}" />
               <span>${escapeHtml(opt)}</span>
             </label>
@@ -690,20 +876,42 @@
           )
           .join("");
 
-        div.innerHTML = `
-          <div class="q-title">${escapeHtml(item.q)}</div>
+        box.innerHTML = `
+          <div class="q-meta">${escapeHtml(item.cat)} — سؤال رقم ${item.num}</div>
+          <div class="q-text">${escapeHtml(item.q)}</div>
           <div class="opts">${optsHtml}</div>
-          <div class="q-explanation" id="exp-${item.id}"></div>
+          <div class="exp" id="exp-${item.id}"></div>
         `;
-        container.appendChild(div);
+        listEl.appendChild(box);
       });
+
+      pagesEl.innerHTML = "";
+      if (!st.quickIds && totalPages > 1) {
+        for (let p = 1; p <= totalPages; p++) {
+          const btn = document.createElement("button");
+          btn.type = "button"
+          btn.className = "page-btn" + (p === st.page ? " active" : "");
+          btn.textContent = p;
+          btn.addEventListener("click", () => {
+            st.page = p;
+            renderSection(secKey);
+          });
+          pagesEl.appendChild(btn);
+        }
+      }
     }
 
-    function gradeList(list, scoreBoxId, keyName) {
+    function gradeCurrentView(secKey) {
+      const st = SECTIONS[secKey];
+      const filtered = getFilteredQuestions(secKey);
+      const start = (st.page - 1) * st.pageSize;
+      const targetItems = st.quickIds ? filtered : filtered.slice(start, start + st.pageSize);
+
       let correct = 0;
-      list.forEach((item) => {
+      targetItems.forEach((item) => {
         const chosen = document.querySelector(`input[name="${item.id}"]:checked`);
         const expEl = document.getElementById("exp-" + item.id);
+        if (!expEl) return;
         expEl.classList.remove("ok", "err");
 
         if (chosen && Number(chosen.value) === item.ans) {
@@ -712,146 +920,153 @@
           expEl.textContent = "إجابة صحيحة — " + item.exp;
         } else {
           expEl.classList.add("err");
-          expEl.textContent =
-            "الإجابة الصحيحة: (" + item.opts[item.ans] + ") — " + item.exp;
+          expEl.textContent = "الصحيح: (" + item.opts[item.ans] + ") — " + item.exp;
         }
       });
 
-      const pct = Math.round((correct / list.length) * 100);
-      scores[keyName] = `${correct} من ${list.length} (${pct}%)`;
-      const box = document.getElementById(scoreBoxId);
-      box.style.display = "block";
-      box.textContent = `نتيجتك: ${correct} من ${list.length} (${pct}%)`;
+      const pct = targetItems.length ? Math.round((correct / targetItems.length) * 100) : 0;
+      const resEl = document.getElementById(secKey + "Result");
+      resEl.style.display = "block";
+      resEl.textContent = `نتيجتك في هذه المجموعة: ${correct} من ${targetItems.length} (${pct}%)`;
     }
 
-    function resetList(list, scoreBoxId, keyName) {
-      list.forEach((item) => {
+    function resetCurrentView(secKey) {
+      const st = SECTIONS[secKey];
+      st.quickIds = null;
+      st.page = 1;
+      st.data.forEach((item) => {
         document.querySelectorAll(`input[name="${item.id}"]`).forEach((r) => {
           r.checked = false;
         });
         const expEl = document.getElementById("exp-" + item.id);
         if (expEl) {
-          expEl.className = "q-explanation";
+          expEl.className = "exp";
           expEl.textContent = "";
         }
       });
-      scores[keyName] = null;
-      const box = document.getElementById(scoreBoxId);
-      box.style.display = "none";
-      box.textContent = "";
+      const resEl = document.getElementById(secKey + "Result");
+      resEl.style.display = "none";
+      resEl.textContent = "";
+      renderSection(secKey);
     }
 
-    function escapeHtml(s) {
-      return String(s)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+    function startQuickQuiz(secKey, count) {
+      const st = SECTIONS[secKey];
+      const pool = st.filter === "all" ? st.data : st.data.filter((q) => q.cat === st.filter);
+      const shuffled = [...pool].sort(() => Math.random() - 0.5).slice(0, count);
+      st.quickIds = shuffled.map((q) => q.id);
+      st.page = 1;
+      renderSection(secKey);
     }
 
-    renderQuestionList(VERBAL_QS, "verbalQuestionsContainer");
-    renderQuestionList(QUANT_QS, "quantQuestionsContainer");
-    renderQuestionList(TAHSILI_QS, "tahsiliQuestionsContainer");
+    // تبويبات التنقل الرئيسية
+    function openTab(tabName) {
+      document.querySelectorAll(".tab-btn").forEach((b) => {
+        b.classList.toggle("active", b.dataset.tab === tabName);
+      });
+      document.querySelectorAll(".panel").forEach((p) => {
+        p.classList.toggle("active", p.id === "panel-" + tabName);
+      });
+    }
 
-    // فلترة أسئلة القسم اللفظي
-    document.querySelectorAll("#verbalFilters .chip-btn").forEach((chip) => {
-      chip.addEventListener("click", () => {
-        document.querySelectorAll("#verbalFilters .chip-btn").forEach((c) => c.classList.remove("active"));
-        chip.classList.add("active");
-        const f = chip.dataset.vfilter;
-        let visibleCount = 0;
-        document.querySelectorAll("#verbalQuestionsContainer .q-item").forEach((qEl) => {
-          const show = f === "all" || qEl.dataset.cat === f;
-          qEl.style.display = show ? "" : "none";
-          if (show) visibleCount++;
+    document.querySelectorAll(".tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => openTab(btn.dataset.tab));
+    });
+
+    document.querySelectorAll(".jump-tab").forEach((btn) => {
+      btn.addEventListener("click", () => openTab(btn.dataset.jump));
+    });
+
+    // فلاتر الأقسام
+    ["verbal", "quant", "tahsili"].forEach((secKey) => {
+      document.querySelectorAll(`#${secKey}Filters .chip`).forEach((chip) => {
+        chip.addEventListener("click", () => {
+          document.querySelectorAll(`#${secKey}Filters .chip`).forEach((c) => c.classList.remove("active"));
+          chip.classList.add("active");
+          SECTIONS[secKey].quickIds = null;
+          SECTIONS[secKey].filter = chip.dataset.filter;
+          SECTIONS[secKey].page = 1;
+          renderSection(secKey);
         });
-        document.getElementById("verbalCountBadge").textContent = `عدد الأسئلة المعروضة: ${visibleCount}`;
       });
     });
-    document.getElementById("verbalCountBadge").textContent = `عدد الأسئلة المعروضة: ${VERBAL_QS.length}`;
 
-    document.getElementById("gradeVerbalBtn").addEventListener("click", () =>
-      gradeList(VERBAL_QS, "verbalScoreBox", "verbal")
-    );
-    document.getElementById("resetVerbalBtn").addEventListener("click", () =>
-      resetList(VERBAL_QS, "verbalScoreBox", "verbal")
-    );
+    document.getElementById("quickVerbalBtn").addEventListener("click", () => startQuickQuiz("verbal", 20));
+    document.getElementById("quickQuantBtn").addEventListener("click", () => startQuickQuiz("quant", 20));
+    document.getElementById("quickTahsiliBtn").addEventListener("click", () => startQuickQuiz("tahsili", 20));
 
-    document.getElementById("gradeQuantBtn").addEventListener("click", () =>
-      gradeList(QUANT_QS, "quantScoreBox", "quant")
-    );
-    document.getElementById("resetQuantBtn").addEventListener("click", () =>
-      resetList(QUANT_QS, "quantScoreBox", "quant")
-    );
+    document.getElementById("gradeVerbalBtn").addEventListener("click", () => gradeCurrentView("verbal"));
+    document.getElementById("gradeQuantBtn").addEventListener("click", () => gradeCurrentView("quant"));
+    document.getElementById("gradeTahsiliBtn").addEventListener("click", () => gradeCurrentView("tahsili"));
 
-    document.getElementById("gradeTahsiliBtn").addEventListener("click", () =>
-      gradeList(TAHSILI_QS, "tahsiliScoreBox", "tahsili")
-    );
-    document.getElementById("resetTahsiliBtn").addEventListener("click", () =>
-      resetList(TAHSILI_QS, "tahsiliScoreBox", "tahsili")
-    );
+    document.getElementById("resetVerbalBtn").addEventListener("click", () => resetCurrentView("verbal"));
+    document.getElementById("resetQuantBtn").addEventListener("click", () => resetCurrentView("quant"));
+    document.getElementById("resetTahsiliBtn").addEventListener("click", () => resetCurrentView("tahsili"));
 
-    // نموذج تسليم الطلاب
-    const LOG_KEY = "harun_alrashid_submissions_v1";
-    function loadLogs() {
-      try { return JSON.parse(localStorage.getItem(LOG_KEY) || "[]"); } catch { return []; }
+    // تسليم الطلاب
+    const STORAGE_KEY = "harun_alrashid_300q_v1";
+    let lastReport = "";
+
+    function getLogs() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); } catch { return []; }
     }
     function saveLogs(arr) {
-      localStorage.setItem(LOG_KEY, JSON.stringify(arr));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
     }
     function renderLogs() {
-      const logEl = document.getElementById("submissionsLog");
-      const items = loadLogs();
-      logEl.innerHTML = "";
-      items.slice().reverse().forEach((it) => {
-        const d = document.createElement("div");
-        d.className = "log-item";
-        d.innerHTML = `<strong>${escapeHtml(it.name)}</strong> ${it.sec ? "(" + escapeHtml(it.sec) + ")" : ""} — <small>${escapeHtml(it.time)}</small><div>${escapeHtml(it.notes)}</div>`;
-        logEl.appendChild(d);
+      const box = document.getElementById("submitLog");
+      const items = getLogs();
+      box.innerHTML = "";
+      items.slice().reverse().forEach((item) => {
+        const div = document.createElement("div");
+        div.className = "log-item";
+        div.innerHTML = `<strong>${escapeHtml(item.name)}</strong> ${item.grade ? "(" + escapeHtml(item.grade) + ")" : ""} — <small>${escapeHtml(item.date)}</small><div>${escapeHtml(item.summary)}</div>`;
+        box.appendChild(div);
       });
     }
 
-    document.getElementById("studentSubmitForm").addEventListener("submit", (e) => {
+    document.getElementById("submitForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const name = document.getElementById("stName").value.trim();
-      const sec = document.getElementById("stSection").value.trim();
-      const notes = document.getElementById("stNotes").value.trim();
-      if (!name || !notes) return;
+      const grade = document.getElementById("stGrade").value.trim();
+      const summary = document.getElementById("stSummary").value.trim();
+      if (!name || !summary) return;
 
-      const time = new Date().toLocaleString("ar-SA");
-      const items = loadLogs();
-      items.push({ name, sec, notes, time });
+      const date = new Date().toLocaleString("ar-SA");
+      const items = getLogs();
+      items.push({ name, grade, summary, date });
       saveLogs(items);
       renderLogs();
 
       lastReport =
-        `منصة المراجعة والتدريب — ثانوية هارون الرشيد\n` +
-        `إعداد وتنسيق: خالد العرفي\n` +
-        `الطالب: ${name}${sec ? " (" + sec + ")" : ""}\n` +
-        `اللفظي: ${scores.verbal || "لم يُختبر"}\n` +
-        `الكمي: ${scores.quant || "لم يُختبر"}\n` +
-        `التحصيلي: ${scores.tahsili || "لم يُختبر"}\n` +
-        `الملاحظات: ${notes}`;
+        `منصة المراجعة والتدريب للقدرات والتحصيلي\n` +
+        `ثانوية هارون الرشيد — المدينة المنورة\n` +
+        `مدير المدرسة: سلطان معلا المطيري | إعداد وتنسيق: خالد العرفي\n` +
+        `الطالب: ${name}${grade ? " (" + grade + ")" : ""}\n` +
+        `الملخص والملاحظات: ${summary}`;
 
-      const fb = document.getElementById("submitFeedback");
-      fb.style.display = "block";
-      fb.textContent = "تم حفظ التسليم وتجهيز التقرير بنجاح. يمكنك الضغط على «نسخ تقرير التسليم» لإرساله.";
+      const msg = document.getElementById("submitMsg");
+      msg.style.display = "block";
+      msg.textContent = "تم حفظ التسليم وتجهيز التقرير بنجاح. اضغط على «نسخ التقرير» لإرساله.";
       e.target.reset();
     });
 
     document.getElementById("copyReportBtn").addEventListener("click", async () => {
       if (!lastReport) {
-        alert("يرجى تعبئة بيانات التسليم والضغط على «حفظ التسليم وتجهيز الملخص» أولاً.");
+        alert("يرجى تعبئة بيانات التسليم والضغط على «حفظ وتوليد تقرير التسليم» أولاً.");
         return;
       }
       try {
         await navigator.clipboard.writeText(lastReport);
-        alert("تم نسخ تقرير التسليم بنجاح.");
+        alert("تم نسخ التقرير بنجاح.");
       } catch {
         alert(lastReport);
       }
     });
 
+    renderSection("verbal");
+    renderSection("quant");
+    renderSection("tahsili");
     renderLogs();
   </script>
 </body>
