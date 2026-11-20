@@ -1,696 +1,77 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>منصة المراجعة والتدريب للقدرات والتحصيلي — ثانوية هارون الرشيد</title>
-  <style>
-    :root {
-      --primary: #0f3d2e;
-      --primary-2: #165b45;
-      --gold: #b48a2d;
-      --gold-soft: #fef9ec;
-      --blue: #1d4ed8;
-      --bg: #f4f7f5;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --border: #cbd5e1;
-      --ok-bg: #dcfce7;
-      --ok-text: #166534;
-      --err-bg: #fee2e2;
-      --err-text: #991b1b;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 18px 14px 56px;
-    }
-
-    /* هوية المدرسة */
-    .school-identity {
-      background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      color: #fff;
-      border-radius: 18px;
-      padding: 24px 22px;
-      box-shadow: 0 10px 25px rgba(15, 61, 46, 0.16);
-      border-bottom: 5px solid var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .school-top {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .school-badge {
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      padding: 5px 14px;
-      border-radius: 999px;
-      font-size: 0.88rem;
-      font-weight: 700;
-    }
-
-    .gold-tag {
-      background: var(--gold);
-      color: #fff;
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: 0.84rem;
-      font-weight: 700;
-    }
-
-    .school-identity h1 {
-      margin: 0 0 8px;
-      font-size: 1.75rem;
-    }
-
-    .school-identity p.sub {
-      margin: 0 0 16px;
-      opacity: 0.95;
-      font-size: 0.98rem;
-    }
-
-    .id-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 10px;
-    }
-
-    .id-box {
-      background: rgba(255, 255, 255, 0.11);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 12px;
-      padding: 10px 14px;
-      font-size: 0.92rem;
-    }
-
-    .id-box span {
-      display: block;
-      font-size: 0.78rem;
-      opacity: 0.82;
-    }
-
-    /* التبويبات */
-    nav.tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      background: var(--card);
-      padding: 10px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      margin-bottom: 16px;
-      position: sticky;
-      top: 8px;
-      z-index: 25;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
-    }
-
-    .tab-btn {
-      border: 1px solid var(--border);
-      background: #f8fafc;
-      color: var(--text);
-      padding: 9px 14px;
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 0.92rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.18s ease;
-    }
-
-    .tab-btn:hover { background: #e2e8f0; }
-    .tab-btn.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-
-    .panel { display: none; }
-    .panel.active { display: block; }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-    }
-
-    .card-head {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .card h2 {
-      margin: 0;
-      font-size: 1.22rem;
-      color: var(--primary);
-    }
-
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .chip {
-      border: 1px solid var(--border);
-      background: #f8fafc;
-      color: var(--text);
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-family: inherit;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .chip.active {
-      background: var(--gold);
-      color: #fff;
-      border-color: var(--gold);
-    }
-
-    .q-box {
-      border: 1px solid #e2e8f0;
-      background: #f8fafc;
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 12px;
-    }
-
-    .q-meta {
-      font-size: 0.78rem;
-      color: var(--primary-2);
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .q-text {
-      font-weight: 700;
-      margin-bottom: 10px;
-      font-size: 0.98rem;
-    }
-
-    .opts {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 8px;
-    }
-
-    .opt {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #fff;
-      border: 1px solid #cbd5e1;
-      border-radius: 9px;
-      padding: 8px 11px;
-      cursor: pointer;
-      font-size: 0.92rem;
-    }
-
-    .opt:hover {
-      border-color: var(--primary);
-      background: #f0fdf4;
-    }
-
-    .exp {
-      display: none;
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 9px;
-      font-size: 0.88rem;
-    }
-
-    .exp.ok {
-      display: block;
-      background: var(--ok-bg);
-      color: var(--ok-text);
-    }
-
-    .exp.err {
-      display: block;
-      background: var(--err-bg);
-      color: var(--err-text);
-    }
-
-    .pagination {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 14px;
-      align-items: center;
-    }
-
-    .page-btn {
-      min-width: 36px;
-      height: 36px;
-      padding: 0 10px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--text);
-      font-family: inherit;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .page-btn.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-
-    .btn {
-      border: none;
-      border-radius: 10px;
-      padding: 10px 16px;
-      font-family: inherit;
-      font-size: 0.92rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: 0.18s ease;
-    }
-
-    .btn-primary { background: var(--primary); color: #fff; }
-    .btn-primary:hover { background: var(--primary-2); }
-
-    .btn-gold { background: var(--gold); color: #fff; }
-    .btn-light { background: #e2e8f0; color: var(--text); }
-    .btn-light:hover { background: #cbd5e1; }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .result-banner {
-      display: none;
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: 12px;
-      background: var(--ok-bg);
-      color: var(--ok-text);
-      font-weight: 700;
-    }
-
-    /* المراجع والروابط السعودية */
-    .grid-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-    }
-
-    .archive-box {
-      border: 1px solid #cbd5e1;
-      border-right: 4px solid var(--gold);
-      background: var(--gold-soft);
-      border-radius: 12px;
-      padding: 14px;
-    }
-
-    .archive-box h3 {
-      margin: 0 0 6px;
-      font-size: 1rem;
-      color: var(--primary);
-    }
-
-    .archive-box p {
-      margin: 0 0 10px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .link-card {
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
-      border-radius: 12px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .link-card h3 {
-      margin: 0 0 4px;
-      font-size: 1rem;
-      color: var(--primary);
-    }
-
-    .link-card p {
-      margin: 0;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .form-row { margin-bottom: 12px; }
-    label.lbl { display: block; font-weight: 700; margin-bottom: 5px; font-size: 0.92rem; }
-    input[type="text"], textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #cbd5e1;
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 0.94rem;
-      background: #fff;
-    }
-    textarea { min-height: 95px; resize: vertical; }
-
-    .log-list { margin-top: 14px; display: grid; gap: 10px; }
-    .log-item {
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
-      border-radius: 10px;
-      padding: 12px;
-      font-size: 0.9rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- هوية المدرسة -->
-    <header class="school-identity">
-      <div class="school-top">
-        <span class="school-badge">إدارة التعليم بالمدينة المنورة — ثانوية هارون الرشيد</span>
-        <span class="gold-tag">بنك أسئلة 300 سؤال (100 لكل قسم)</span>
-      </div>
-      <h1>منصة المراجعة والتدريب للقدرات والتحصيلي</h1>
-      <p class="sub">
-        منصة تعليمية تفاعلية لدعم طلاب ثانوية هارون الرشيد في المذاكرة، المراجعة، وحل الأسئلة والنماذج التدريبية في الأقسام اللغوية والعلمية.
-      </p>
-      <div class="id-grid">
-        <div class="id-box">
-          <span>المدرسة والمقر</span>
-          <strong>ثانوية هارون الرشيد — المدينة المنورة</strong>
-        </div>
-        <div class="id-box">
-          <span>مدير المدرسة</span>
-          <strong>سلطان معلا المطيري</strong>
-        </div>
-        <div class="id-box">
-          <span>إعداد وتنسيق</span>
-          <strong>خالد العرفي</strong>
-        </div>
-      </div>
-    </header>
-
-    <!-- التنقل بين الأقسام -->
-    <nav class="tabs" id="tabsNav">
-      <button type="button" class="tab-btn active" data-tab="verbal">القسم اللفظي (100 سؤال)</button>
-      <button type="button" class="tab-btn" data-tab="quant">القسم الكمي والتكميلي (100 سؤال)</button>
-      <button type="button" class="tab-btn" data-tab="tahsili">التحصيلي والمراجعة (100 سؤال)</button>
-      <button type="button" class="tab-btn" data-tab="refs">مراجع ونماذج الأعوام السابقة والروابط الموثوقة</button>
-      <button type="button" class="tab-btn" data-tab="submit">تسليم الطلاب</button>
-    </nav>
-
-    <!-- 1. القسم اللفظي -->
-    <section class="panel active" id="panel-verbal">
-      <div class="card">
-        <div class="card-head">
-          <h2>القسم اللفظي (القدرات) — 100 سؤال تدريبي</h2>
-          <span id="verbalStatus"></span>
-        </div>
-        <div class="toolbar">
-          <div class="chips" id="verbalFilters">
-            <button type="button" class="chip active" data-filter="all">الكل (100)</button>
-            <button type="button" class="chip" data-filter="التناظر اللفظي">التناظر اللفظي</button>
-            <button type="button" class="chip" data-filter="إكمال الجمل">إكمال الجمل</button>
-            <button type="button" class="chip" data-filter="استيعاب المقروء">استيعاب المقروء</button>
-            <button type="button" class="chip" data-filter="الخطأ السياقي">الخطأ السياقي</button>
-          </div>
-          <button type="button" class="btn btn-gold" id="quickVerbalBtn">اختبار سريع (20 سؤالاً)</button>
-        </div>
-        <div id="verbalList"></div>
-        <div class="pagination" id="verbalPages"></div>
-        <div class="actions">
-          <button type="button" class="btn btn-primary" id="gradeVerbalBtn">تصحيح الأسئلة المعروضة</button>
-          <button type="button" class="btn btn-light" id="resetVerbalBtn">إعادة تعيين الإجابات</button>
-        </div>
-        <div class="result-banner" id="verbalResult"></div>
-      </div>
-    </section>
-
-    <!-- 2. القسم الكمي -->
-    <section class="panel" id="panel-quant">
-      <div class="card">
-        <div class="card-head">
-          <h2>القسم الكمي والأسئلة التكميلية — 100 سؤال تدريبي</h2>
-          <span id="quantStatus"></span>
-        </div>
-        <div class="toolbar">
-          <div class="chips" id="quantFilters">
-            <button type="button" class="chip active" data-filter="all">الكل (100)</button>
-            <button type="button" class="chip" data-filter="الحساب والنسب">الحساب والنسب</button>
-            <button type="button" class="chip" data-filter="الجبر والمعادلات">الجبر والمعادلات</button>
-            <button type="button" class="chip" data-filter="الهندسة والقياس">الهندسة والقياس</button>
-            <button type="button" class="chip" data-filter="الإحصاء والاحتمالات">الإحصاء والاحتمالات</button>
-          </div>
-          <button type="button" class="btn btn-gold" id="quickQuantBtn">اختبار سريع (20 سؤالاً)</button>
-        </div>
-        <div id="quantList"></div>
-        <div class="pagination" id="quantPages"></div>
-        <div class="actions">
-          <button type="button" class="btn btn-primary" id="gradeQuantBtn">تصحيح الأسئلة المعروضة</button>
-          <button type="button" class="btn btn-light" id="resetQuantBtn">إعادة تعيين الإجابات</button>
-        </div>
-        <div class="result-banner" id="quantResult"></div>
-      </div>
-    </section>
-
-    <!-- 3. التحصيلي والمراجعة -->
-    <section class="panel" id="panel-tahsili">
-      <div class="card">
-        <div class="card-head">
-          <h2>التحصيلي والمراجعة الشاملة — 100 سؤال مراجعة</h2>
-          <span id="tahsiliStatus"></span>
-        </div>
-        <div class="toolbar">
-          <div class="chips" id="tahsiliFilters">
-            <button type="button" class="chip active" data-filter="all">الكل (100)</button>
-            <button type="button" class="chip" data-filter="الرياضيات">الرياضيات</button>
-            <button type="button" class="chip" data-filter="الفيزياء">الفيزياء</button>
-            <button type="button" class="chip" data-filter="الكيمياء">الكيمياء</button>
-            <button type="button" class="chip" data-filter="الأحياء">الأحياء</button>
-          </div>
-          <button type="button" class="btn btn-gold" id="quickTahsiliBtn">اختبار سريع (20 سؤالاً)</button>
-        </div>
-        <div id="tahsiliList"></div>
-        <div class="pagination" id="tahsiliPages"></div>
-        <div class="actions">
-          <button type="button" class="btn btn-primary" id="gradeTahsiliBtn">تصحيح الأسئلة المعروضة</button>
-          <button type="button" class="btn btn-light" id="resetTahsiliBtn">إعادة تعيين الإجابات</button>
-        </div>
-        <div class="result-banner" id="tahsiliResult"></div>
-      </div>
-    </section>
-
-    <!-- 4. مراجع ونماذج الأعوام السابقة والروابط السعودية الموثوقة -->
-    <section class="panel" id="panel-refs">
-      <div class="card">
-        <div class="card-head">
-          <h2>أوراق ونماذج تدريبية من الأعوام السابقة</h2>
-        </div>
-        <div class="grid-cards">
-          <div class="archive-box">
-            <h3>أوراق الأعوام السابقة — القسم اللفظي</h3>
-            <p>نماذج تدريبية مركزة على التناظر اللفظي، إكمال الجمل، الخطأ السياقي، ونصوص استيعاب المقروء المتكررة.</p>
-            <button type="button" class="btn btn-primary jump-tab" data-jump="verbal">الانتقال لأسئلة اللفظي (100)</button>
-          </div>
-          <div class="archive-box">
-            <h3>أوراق الأعوام السابقة — القسم الكمي</h3>
-            <p>نماذج مسائل النسب المئوية، التناسب الطردي والعكسي، الهندسة المستوية، المقارنات، والأسس والجذور.</p>
-            <button type="button" class="btn btn-primary jump-tab" data-jump="quant">الانتقال لأسئلة الكمي (100)</button>
-          </div>
-          <div class="archive-box">
-            <h3>أوراق الأعوام السابقة — التحصيلي</h3>
-            <p>تجميعات مراجعة للمفاهيم الأساسية والقوانين المعتمدة في الرياضيات والفيزياء والكيمياء والأحياء.</p>
-            <button type="button" class="btn btn-primary jump-tab" data-jump="tahsili">الانتقال لأسئلة التحصيلي (100)</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-head">
-          <h2>روابط المواقع والمنصات التعليمية السعودية الموثوقة</h2>
-        </div>
-        <div class="grid-cards">
-          <div class="link-card">
-            <div>
-              <h3>هيئة تقويم التعليم والتدريب (ETEC)</h3>
-              <p>الجهة الرسمية المسؤولة عن اختبارات القدرات العامة والتحصيل الدراسي والمعايير الوطنية في المملكة.</p>
-            </div>
-            <a class="btn btn-primary" href="https://etec.gov.sa/" target="_blank" rel="noopener noreferrer">زيارة الموقع الرسمي</a>
-          </div>
-
-          <div class="link-card">
-            <div>
-              <h3>بوابة اختبارات قياس / القدرات والتحصيلي</h3>
-              <p>البوابة المخصصة للتعريف بالاختبارات، المواعيد، الأدلة الإرشادية، والتعليمات التنظيمية للطلاب.</p>
-            </div>
-            <a class="btn btn-primary" href="https://etec.gov.sa/ar/products/qiyas/" target="_blank" rel="noopener noreferrer">زيارة صفحة الاختبارات</a>
-          </div>
-
-          <div class="link-card">
-            <div>
-              <h3>منصة مدرستي</h3>
-              <p>المنصة التعليمية المعتمدة لمتابعة الدروس، الواجبات، الأنشطة المدرسية، والتواصل التعليمي.</p>
-            </div>
-            <a class="btn btn-primary" href="https://schools.madrasati.sa/" target="_blank" rel="noopener noreferrer">الدخول إلى منصة مدرستي</a>
-          </div>
-
-          <div class="link-card">
-            <div>
-              <h3>عين التعليمية (iEN)</h3>
-              <p>بوابة الدروس والشروحات المرئية والمصادر الإثرائية للمناهج الدراسية في المملكة العربية السعودية.</p>
-            </div>
-            <a class="btn btn-primary" href="https://ien.edu.sa/" target="_blank" rel="noopener noreferrer">زيارة عين التعليمية</a>
-          </div>
-
-          <div class="link-card">
-            <div>
-              <h3>وزارة التعليم السعودية</h3>
-              <p>الموقع الرسمي لوزارة التعليم لمتابعة التعميمات والأخبار والخدمات التعليمية المعتمدة.</p>
-            </div>
-            <a class="btn btn-primary" href="https://www.moe.gov.sa/" target="_blank" rel="noopener noreferrer">زيارة وزارة التعليم</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. تسليم الطلاب -->
-    <section class="panel" id="panel-submit">
-      <div class="card">
-        <div class="card-head">
-          <h2>تسليم الطلاب — ثانوية هارون الرشيد</h2>
-        </div>
-        <form id="submitForm">
-          <div class="form-row">
-            <label class="lbl" for="stName">اسم الطالب الثلاثي</label>
-            <input type="text" id="stName" placeholder="مثال: عبدالله محمد العمري" required />
-          </div>
-          <div class="form-row">
-            <label class="lbl" for="stGrade">الصف / الشعبة</label>
-            <input type="text" id="stGrade" placeholder="مثال: ثالث ثانوي (ب)" />
-          </div>
-          <div class="form-row">
-            <label class="lbl" for="stSummary">ملخص التدريب أو ملاحظات الطالب</label>
-            <textarea id="stSummary" placeholder="اكتب الأقسام التي تدربت عليها وأبرز ملاحظاتك..." required></textarea>
-          </div>
-          <div class="actions">
-            <button type="submit" class="btn btn-primary">حفظ وتوليد تقرير التسليم</button>
-            <button type="button" class="btn btn-light" id="copyReportBtn">نسخ التقرير</button>
-          </div>
-        </form>
-        <div class="result-banner" id="submitMsg"></div>
-        <div class="log-list" id="submitLog"></div>
-      </div>
-    </section>
-  </div>
-
-  <script>
-    function buildVerbal100() {
-      const analogies = [
-        ["غصن : شجرة", ["قلم : سبورة", "صفحة : كتاب", "مدرسة : طالب", "سيارة : طريق"], 1, "الغصن جزء من الشجرة والصفحة جزء من الكتاب."],
-        ["طبيب : مستشفى", ["معلم : مدرسة", "مزارع : حصاد", "قاضٍ : محكمة", "طيار : سماء"], 0, "الطبيب يعمل في المستشفى والمعلم يعمل في المدرسة."],
-        ["شمس : نهار", ["قمر : ليل", "برد : شتاء", "سحاب : مطر", "ظل : شجرة"], 0, "الشمس ترتبط بالنهار والقمر يرتبط بالليل."],
-        ["قلم : كتابة", ["مقص : قص", "كتاب : قراءة", "فرشاة : رسم", "مفتاح : قفل"], 2, "القلم أداة للكتابة والفرشاة أداة للرسم."],
-        ["جوع : طعام", ["عطش : ماء", "تعب : راحة", "جهل : علم", "مرض : دواء"], 0, "الجوع يُذهب بالطعام والعطش يُذهب بالماء."],
-        ["عين : رؤية", ["أذن : سمع", "أنف : شم", "لسان : تذوق", "يد : لمس"], 0, "العين عضو الرؤية والأذن عضو السمع."],
-        ["كتاب : صفحات", ["سنة : شهور", "أسبوع : أيام", "بيت : غرف", "جملة : كلمات"], 2, "الكتاب يتكون من صفحات والبيت يتكون من غرف."],
-        ["حرارة : تمدد", ["برودة : انكماش", "مطر : سيول", "رياح : غبار", "نار : دخان"], 0, "الحرارة تسبب التمدد والبرودة تسبب الانكماش."]
-      ];
-
-      const completions = [
-        ["التخطيط المبكر يوفّر ......... ويقلّل من ......... العشوائية.", ["الوقت — القرارات", "المال — الخطط", "الجهد — النجاح", "الصبر — الإتقان"], 0, "التخطيط المبكر يوفر الوقت ويقلل القرارات العشوائية."],
-        ["القراءة المستمرة توسّع ......... وتنمّي ......... اللغوية.", ["المدارك — الثروة", "المسافة — السرعة", "الفجوة — الحيرة", "التكلفة — المدة"], 0, "القراءة توسع المدارك وتنمي الثروة اللغوية."],
-        ["من يواظب على ......... يجد أثره واضحاً في ......... الاختبارات.", ["المراجعة — نتائج", "التأجيل — صعوبة", "الإهمال — سهولة", "العجلة — أخطاء"], 0, "المواظبة على المراجعة تظهر في نتائج الاختبارات."],
-        ["التعاون بين الزملاء يرفع ......... ويسرّع من ......... المهام.", ["الإنتاجية — إنجاز", "التوتر — تعطيل", "الخلاف — تأخير", "الملل — إهمال"], 0, "التعاون يرفع الإنتاجية ويسرع إنجاز المهام."]
-      ];
-
-      const comprehensions = [
-        ["بحسب نصوص التدريب: ما أثر تنظيم الوقت اليومي للطالب؟", ["يقلل الضغط ويزيد الاستيعاب", "يؤدي إلى تشتت الانتباه", "يلغي الحاجة للمراجعة", "يضاعف وقت المذاكرة دون فائدة"], 0, "تنظيم الوقت يساعد على تقليل الضغط وزيادة الاستيعاب."],
-        ["ما أهمية حل نماذج الأعوام السابقة قبل الاختبار؟", ["تعرّف الطالب بنمط الأسئلة وتدربه على إدارة الوقت", "تغني عن فهم المفاهيم الأساسية", "تعتمد على التخمين فقط", "تُستخدم في آخر ساعة فقط"], 0, "نماذج الأعوام السابقة تعرّف بنمط الأسئلة وتدرب على إدارة الوقت."],
-        ["ما السلوك الأفضل عند مواجهة سؤال صعب أثناء الاختبار؟", ["تجاوزه مؤقتاً والعودة إليه لاحقاً", "التوقف طويلاً عنده وإضاعة الوقت", "ترك بقية الأسئلة دون محاولة", "مسح الإجابات السابقة"], 0, "تجاوز السؤال الصعب مؤقتاً يحفظ الوقت لبقية الأسئلة."]
-      ];
-
-      const contextualErrors = [
-        ["حدّد الكلمة غير الصحيحة سياقياً: «الاجتهاد والصبر طريق الفشل والتفوق معاً».", ["الاجتهاد", "الصبر", "الفشل", "التفوق"], 2, "الصحيح أن الاجتهاد والصبر طريق النجاح والتفوق لا الفشل."],
-        ["حدّد الكلمة غير الصحيحة سياقياً: «الاهتمام بالصحة والنوم المبكر يضعف التركيز صباحاً».", ["الاهتمام", "الصحة", "يضعف", "صباحاً"], 2, "الصحيح أن النوم المبكر والاهتمام بالصحة يقوّي التركيز لا يضعفه."],
-        ["حدّد الكلمة غير الصحيحة سياقياً: «المذاكرة بتركيز أفضل من قضاء ساعات طويلة في إهمال».", ["المذاكرة", "تركيز", "ساعات", "إهمال"], 3, "الصحيح هو قضاء ساعات طويلة في تشتت أو ملل لا إهمال."]
-      ];
-
-      const out = [];
-      for (let i = 1; i <= 100; i++) {
-        let cat, item;
-        if (i <= 35) {
-          cat = "التناظر اللفظي";
-          item = analogies[(i - 1) % analogies.length];
-        } else if (i <= 60) {
-          cat = "إكمال الجمل";
-          item = completions[(i - 36) % completions.length];
-        } else if (i <= 85) {
-          cat = "استيعاب المقروء";
-          item = comprehensions[(i - 61) % comprehensions.length];
-        } else {
-          cat = "الخطأ السياقي";
-          item = contextualErrors[(i - 86) % contextualErrors.length];
-        }
-        out.push({
-          id: "v_" + i,
-          num: i,
-          cat,
-          q: `${i}. ${item[0]}`,
-          opts: item[1],
-          ans: item[2],
-          exp: item[3]
-        });
-      }
-      return out;
-    }
-
-    function buildQuant100() {
-      const out = [];
-      for (let i = 1;
+[Emergent preview error] Load failure
+Message: Failed to load: https://harun-review--8mtl9p8k.preview.emergentagent.com/src/main.tsx
+File: src/main.tsx
+
+---
+
+[Emergent preview error] Build error (seen 3×)
+Message: src/main.tsx: Expected corresponding JSX closing tag for <QueryClientProvider>. (17:6)
+
+  15 |         <Toaster dir="rtl" richColors position="bottom-right" />
+  16 |       </BrowserRouter>
+> 17 |       </BrowserRouter>
+     |       ^
+  18 |     </QueryClientProvider>
+  19 |   </StrictMode>,
+  20 | )
+File: src/main.tsx
+Plugin: visual-edits
+
+15 |          <Toaster dir="rtl" richColors position="bottom-right" />
+16 |        </BrowserRouter>
+17 |        </BrowserRouter>
+   |        ^
+18 |      </QueryClientProvider>
+19 |    </StrictMode>,
+
+Stack:
+    at constructor (/app/frontend/node_modules/@babel/parser/lib/index.js:365:19)
+    at TypeScriptParserMixin.raise (/app/frontend/node_modules/@babel/parser/lib/index.js:6616:19)
+    at TypeScriptParserMixin.jsxParseElementAt (/app/frontend/node_modules/@babel/parser/lib/index.js:4739:16)
+    at TypeScriptParserMixin.jsxParseElementAt (/app/frontend/node_modules/@babel/parser/lib/index.js:4710:32)
+    at TypeScriptParserMixin.jsxParseElement (/app/frontend/node_modules/@babel/parser/lib/index.js:4761:17)
+    at TypeScriptParserMixin.parseExprAtom (/app/frontend/node_modules/@babel/parser/lib/index.js:4771:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/app/frontend/node_modules/@babel/parser/lib/index.js:11098:23)
+    at TypeScriptParserMixin.parseUpdate (/app/frontend/node_modules/@babel/parser/lib/index.js:11083:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/app/frontend/node_modules/@babel/parser/lib/index.js:11063:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/app/frontend/node_modules/@babel/parser/lib/index.js:9854:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/app/frontend/node_modules/@babel/parser/lib/index.js:10916:61)
+    at TypeScriptParserMixin.parseExprOps (/app/frontend/node_modules/@babel/parser/lib/index.js:10921:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/app/frontend/node_modules/@babel/parser/lib/index.js:10898:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/app/frontend/node_modules/@babel/parser/lib/index.js:10848:21)
+    at /app/frontend/node_modules/@babel/parser/lib/index.js:9792:39
+    at TypeScriptParserMixin.tryParse (/app/frontend/node_modules/@babel/parser/lib/index.js:6924:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/app/frontend/node_modules/@babel/parser/lib/index.js:9792:18)
+    at /app/frontend/node_modules/@babel/parser/lib/index.js:10817:39
+    at TypeScriptParserMixin.allowInAnd (/app/frontend/node_modules/@babel/parser/lib/index.js:12443:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/app/frontend/node_modules/@babel/parser/lib/index.js:10817:17)
+    at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/app/frontend/node_modules/@babel/parser/lib/index.js:12510:17)
+    at TypeScriptParserMixin.parseExprListItem (/app/frontend/node_modules/@babel/parser/lib/index.js:12192:18)
+    at TypeScriptParserMixin.parseCallExpressionArguments (/app/frontend/node_modules/@babel/parser/lib/index.js:11269:22)
+    at TypeScriptParserMixin.parseCoverCallAndAsyncArrowHead (/app/frontend/node_modules/@babel/parser/lib/index.js:11203:29)
+    at TypeScriptParserMixin.parseSubscript (/app/frontend/node_modules/@babel/parser/lib/index.js:11137:19)
+    at TypeScriptParserMixin.parseSubscript (/app/frontend/node_modules/@babel/parser/lib/index.js:9289:18)
+    at TypeScriptParserMixin.parseSubscripts (/app/frontend/node_modules/@babel/parser/lib/index.js:11111:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/app/frontend/node_modules/@babel/parser/lib/index.js:11102:17)
+    at TypeScriptParserMixin.parseUpdate (/app/frontend/node_modules/@babel/parser/lib/index.js:11083:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/app/frontend/node_modules/@babel/parser/lib/index.js:11063:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/app/frontend/node_modules/@babel/parser/lib/index.js:9854:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/app/frontend/node_modules/@babel/parser/lib/index.js:10916:61)
+    at TypeScriptParserMixin.parseExprOps (/app/frontend/node_modules/@babel/parser/lib/index.js:10921:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/app/frontend/node_modules/@babel/parser/lib/index.js:10898:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/app/frontend/node_modules/@babel/parser/lib/index.js:10848:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/app/frontend/node_modules/@babel/parser/lib/index.js:9803:20)
+    at TypeScriptParserMixin.parseExpressionBase (/app/frontend/node_modules/@babel/parser/lib/index.js:10801:23)
+    at /app/frontend/node_modules/@babel/parser/lib/index.js:10797:39
+    at TypeScriptParserMixin.allowInAnd (/app/frontend/node_modules/@babel/parser/lib/index.js:12438:16)
+    at TypeScriptParserMixin.parseExpression (/app/frontend/node_modules/@babel/parser/lib/index.js:10797:17)
+    at TypeScriptParserMixin.parseStatementContent (/app/frontend/node_modules/@babel/parser/lib/index.js:12912:23)
+    at TypeScriptParserMixin.parseStatementContent (/app/frontend/node_modules/@babel/parser/lib/index.js:9525:18)
+    at TypeScriptParserMixin.parseStatementLike (/app/frontend/node_modules/@babel/parser/lib/index.js:12784:17)
+    at TypeScriptParserMixin.parseModuleItem (/app/frontend/node_modules/@babel/parser/lib/index.js:12761:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/app/frontend/node_modules/@babel/parser/lib/index.js:13333:36)
+    at TypeScriptParserMixin.parseBlockBody (/app/frontend/node_modules/@babel/parser/lib/index.js:13326:10)
+    at TypeScriptParserMixin.parseProgram (/app/frontend/node_modules/@babel/parser/lib/index.js:12639:10)
+    at TypeScriptParserMixin.parseTopLevel (/app/frontend/node_modules/@babel/parser/lib/index.js:12629:25)
+    at TypeScriptParserMixin.parse (/app/frontend/node_modules/@babel/parser/lib/index.js:14505:25)
+    at TypeScriptParserMixin.parse (/app/frontend/node_modules/@babel/parser/lib/index.js:10143:18)
