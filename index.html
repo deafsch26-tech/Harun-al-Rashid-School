@@ -37,7 +37,6 @@
       padding: 18px 14px 56px;
     }
 
-    /* هوية وشعار المدرسة */
     .school-identity {
       background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color: #fff;
@@ -57,8 +56,8 @@
     }
 
     .logo-frame {
-      width: 118px;
-      height: 118px;
+      width: 132px;
+      height: 132px;
       background: #ffffff;
       border: 3px solid var(--gold);
       border-radius: 16px;
@@ -71,7 +70,8 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
     }
 
-    .logo-frame img {
+    .logo-frame img,
+    .logo-frame svg {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
@@ -136,7 +136,6 @@
       opacity: 0.82;
     }
 
-    /* التبويبات */
     nav.tabs {
       display: flex;
       flex-wrap: wrap;
@@ -439,7 +438,6 @@
 </head>
 <body>
   <div class="container">
-    <!-- هوية وشعار المدرسة -->
     <header class="school-identity">
       <div class="brand-row">
         <div class="logo-frame">
@@ -447,11 +445,17 @@
             id="schoolLogoImg"
             src="logo.png"
             alt="شعار ثانوية هارون الرشيد — تعليم .. قيم .. مستقبل واعد"
-            onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block';"
+            onerror="this.style.display='none'; document.getElementById('emblemSvg').style.display='block';"
           />
-          <div id="logoFallback" style="display:none; text-align:center; color:#0f3d2e; font-weight:800; font-size:0.82rem; line-height:1.4;">
-            ثانوية<br/>هارون الرشيد<br/><span style="color:#b48a2d; font-size:0.72rem;">تعليم .. قيم .. مستقبل واعد</span>
-          </div>
+          <svg id="emblemSvg" viewBox="0 0 140 140" width="120" height="120" aria-label="شعار ثانوية هارون الرشيد">
+            <rect x="4" y="4" width="132" height="132" rx="18" fill="#ffffff" stroke="#b48a2d" stroke-width="3"/>
+            <text x="70" y="28" text-anchor="middle" fill="#0f3d2e" font-size="14" font-weight="800">ثانوية</text>
+            <text x="70" y="52" text-anchor="middle" fill="#b48a2d" font-size="18" font-weight="900">هارون الرشيد</text>
+            <path d="M22 76 Q46 58 70 72 Q94 58 118 76 L114 84 Q92 68 70 80 Q48 68 26 84 Z" fill="#0f3d2e"/>
+            <path d="M26 84 Q48 70 70 82 Q92 70 114 84" fill="none" stroke="#b48a2d" stroke-width="2.5"/>
+            <rect x="14" y="92" width="112" height="24" rx="8" fill="#0f3d2e" stroke="#b48a2d" stroke-width="2"/>
+            <text x="70" y="108" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="700">تعليم .. قيم .. مستقبل واعد</text>
+          </svg>
         </div>
         <div class="brand-text">
           <div>
@@ -481,7 +485,6 @@
       </div>
     </header>
 
-    <!-- التنقل بين الأقسام -->
     <nav class="tabs" id="tabsNav">
       <button type="button" class="tab-btn active" data-tab="tahsili">التحصيلي والمراجعة (100 سؤال)</button>
       <button type="button" class="tab-btn" data-tab="verbal">القسم اللفظي (100 سؤال)</button>
@@ -490,7 +493,6 @@
       <button type="button" class="tab-btn" data-tab="submit">تسليم الطلاب</button>
     </nav>
 
-    <!-- 1. التحصيلي والمراجعة (من الملف المرفق) -->
     <section class="panel active" id="panel-tahsili">
       <div class="card">
         <div class="card-head">
@@ -517,7 +519,6 @@
       </div>
     </section>
 
-    <!-- 2. القسم اللفظي -->
     <section class="panel" id="panel-verbal">
       <div class="card">
         <div class="card-head">
@@ -544,7 +545,6 @@
       </div>
     </section>
 
-    <!-- 3. القسم الكمي -->
     <section class="panel" id="panel-quant">
       <div class="card">
         <div class="card-head">
@@ -571,7 +571,6 @@
       </div>
     </section>
 
-    <!-- 4. مراجع الأعوام السابقة والروابط السعودية الموثوقة -->
     <section class="panel" id="panel-refs">
       <div class="card">
         <div class="card-head">
@@ -640,7 +639,6 @@
       </div>
     </section>
 
-    <!-- 5. تسليم الطلاب -->
     <section class="panel" id="panel-submit">
       <div class="card">
         <div class="card-head">
@@ -976,7 +974,7 @@
     document.getElementById("resetVerbalBtn").addEventListener("click", () => resetView("verbal"));
     document.getElementById("resetQuantBtn").addEventListener("click", () => resetView("quant"));
 
-    const STORAGE_KEY = "harun_rashid_logo_pdf_v1";
+    const STORAGE_KEY = "harun_rashid_logo_pdf_v2";
     let lastReport = "";
 
     function getLogs() {
