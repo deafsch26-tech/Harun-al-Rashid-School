@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>منصة المراجعة والتدريب للقدرات والتحصيلي — ثانوية هارون الرشيد</title>
+  <title>منصة المراجعة والتدريب — ثانوية هارون الرشيد</title>
   <style>
     :root {
       --primary: #0f3d2e;
       --primary-2: #165b45;
       --gold: #b48a2d;
       --gold-soft: #fef9ec;
-      --blue: #1d4ed8;
       --bg: #f4f7f5;
       --card: #ffffff;
       --text: #0f172a;
@@ -33,12 +32,12 @@
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 18px 14px 56px;
     }
 
-    /* هوية المدرسة */
+    /* هوية وشعار المدرسة */
     .school-identity {
       background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color: #fff;
@@ -49,42 +48,72 @@
       margin-bottom: 16px;
     }
 
-    .school-top {
+    .brand-row {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .logo-frame {
+      width: 118px;
+      height: 118px;
+      background: #ffffff;
+      border: 3px solid var(--gold);
+      border-radius: 16px;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    }
+
+    .logo-frame img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-text {
+      flex: 1;
+      min-width: 240px;
     }
 
     .school-badge {
-      background: rgba(255, 255, 255, 0.14);
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.28);
-      padding: 5px 14px;
+      padding: 4px 12px;
       border-radius: 999px;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 700;
+      margin-bottom: 8px;
     }
 
     .gold-tag {
+      display: inline-block;
       background: var(--gold);
       color: #fff;
       padding: 4px 12px;
       border-radius: 999px;
       font-size: 0.84rem;
       font-weight: 700;
+      margin-right: 6px;
     }
 
     .school-identity h1 {
-      margin: 0 0 8px;
-      font-size: 1.75rem;
+      margin: 0 0 6px;
+      font-size: 1.7rem;
     }
 
     .school-identity p.sub {
-      margin: 0 0 16px;
+      margin: 0;
       opacity: 0.95;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
     }
 
     .id-grid {
@@ -168,7 +197,7 @@
 
     .card h2 {
       margin: 0;
-      font-size: 1.22rem;
+      font-size: 1.2rem;
       color: var(--primary);
     }
 
@@ -336,7 +365,6 @@
       font-weight: 700;
     }
 
-    /* المراجع والروابط السعودية */
     .grid-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -411,19 +439,35 @@
 </head>
 <body>
   <div class="container">
-    <!-- هوية المدرسة -->
+    <!-- هوية وشعار المدرسة -->
     <header class="school-identity">
-      <div class="school-top">
-        <span class="school-badge">إدارة التعليم بالمدينة المنورة — ثانوية هارون الرشيد</span>
-        <span class="gold-tag">بنك أسئلة 300 سؤال (100 لكل قسم)</span>
+      <div class="brand-row">
+        <div class="logo-frame">
+          <img
+            id="schoolLogoImg"
+            src="logo.png"
+            alt="شعار ثانوية هارون الرشيد — تعليم .. قيم .. مستقبل واعد"
+            onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block';"
+          />
+          <div id="logoFallback" style="display:none; text-align:center; color:#0f3d2e; font-weight:800; font-size:0.82rem; line-height:1.4;">
+            ثانوية<br/>هارون الرشيد<br/><span style="color:#b48a2d; font-size:0.72rem;">تعليم .. قيم .. مستقبل واعد</span>
+          </div>
+        </div>
+        <div class="brand-text">
+          <div>
+            <span class="school-badge">ثانوية هارون الرشيد — المدينة المنورة</span>
+            <span class="gold-tag">تعليم .. قيم .. مستقبل واعد</span>
+          </div>
+          <h1>منصة المراجعة والتدريب للقدرات والتحصيلي</h1>
+          <p class="sub">
+            أسئلة ومراجعات مبنية على ملف التحصيلي المرفق وأقسام التدريب للطلاب (100 سؤال لكل قسم).
+          </p>
+        </div>
       </div>
-      <h1>منصة المراجعة والتدريب للقدرات والتحصيلي</h1>
-      <p class="sub">
-        منصة تعليمية تفاعلية لدعم طلاب ثانوية هارون الرشيد في المذاكرة، المراجعة، وحل الأسئلة والنماذج التدريبية في الأقسام اللغوية والعلمية.
-      </p>
+
       <div class="id-grid">
         <div class="id-box">
-          <span>المدرسة والمقر</span>
+          <span>المدرسة</span>
           <strong>ثانوية هارون الرشيد — المدينة المنورة</strong>
         </div>
         <div class="id-box">
@@ -439,15 +483,42 @@
 
     <!-- التنقل بين الأقسام -->
     <nav class="tabs" id="tabsNav">
-      <button type="button" class="tab-btn active" data-tab="verbal">القسم اللفظي (100 سؤال)</button>
+      <button type="button" class="tab-btn active" data-tab="tahsili">التحصيلي والمراجعة (100 سؤال)</button>
+      <button type="button" class="tab-btn" data-tab="verbal">القسم اللفظي (100 سؤال)</button>
       <button type="button" class="tab-btn" data-tab="quant">القسم الكمي والتكميلي (100 سؤال)</button>
-      <button type="button" class="tab-btn" data-tab="tahsili">التحصيلي والمراجعة (100 سؤال)</button>
-      <button type="button" class="tab-btn" data-tab="refs">مراجع ونماذج الأعوام السابقة والروابط الموثوقة</button>
+      <button type="button" class="tab-btn" data-tab="refs">مراجع الأعوام السابقة والروابط الموثوقة</button>
       <button type="button" class="tab-btn" data-tab="submit">تسليم الطلاب</button>
     </nav>
 
-    <!-- 1. القسم اللفظي -->
-    <section class="panel active" id="panel-verbal">
+    <!-- 1. التحصيلي والمراجعة (من الملف المرفق) -->
+    <section class="panel active" id="panel-tahsili">
+      <div class="card">
+        <div class="card-head">
+          <h2>التحصيلي والمراجعة الشاملة (مستمد من ملف التحصيلي المرفق — 100 سؤال)</h2>
+          <span id="tahsiliStatus"></span>
+        </div>
+        <div class="toolbar">
+          <div class="chips" id="tahsiliFilters">
+            <button type="button" class="chip active" data-filter="all">الكل (100)</button>
+            <button type="button" class="chip" data-filter="الرياضيات">الرياضيات</button>
+            <button type="button" class="chip" data-filter="الفيزياء">الفيزياء</button>
+            <button type="button" class="chip" data-filter="الكيمياء">الكيمياء</button>
+            <button type="button" class="chip" data-filter="الأحياء">الأحياء</button>
+          </div>
+          <button type="button" class="btn btn-gold" id="quickTahsiliBtn">اختبار سريع (20 سؤالاً)</button>
+        </div>
+        <div id="tahsiliList"></div>
+        <div class="pagination" id="tahsiliPages"></div>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="gradeTahsiliBtn">تصحيح الأسئلة المعروضة</button>
+          <button type="button" class="btn btn-light" id="resetTahsiliBtn">إعادة تعيين الإجابات</button>
+        </div>
+        <div class="result-banner" id="tahsiliResult"></div>
+      </div>
+    </section>
+
+    <!-- 2. القسم اللفظي -->
+    <section class="panel" id="panel-verbal">
       <div class="card">
         <div class="card-head">
           <h2>القسم اللفظي (القدرات) — 100 سؤال تدريبي</h2>
@@ -473,7 +544,7 @@
       </div>
     </section>
 
-    <!-- 2. القسم الكمي -->
+    <!-- 3. القسم الكمي -->
     <section class="panel" id="panel-quant">
       <div class="card">
         <div class="card-head">
@@ -500,54 +571,27 @@
       </div>
     </section>
 
-    <!-- 3. التحصيلي والمراجعة -->
-    <section class="panel" id="panel-tahsili">
-      <div class="card">
-        <div class="card-head">
-          <h2>التحصيلي والمراجعة الشاملة — 100 سؤال مراجعة</h2>
-          <span id="tahsiliStatus"></span>
-        </div>
-        <div class="toolbar">
-          <div class="chips" id="tahsiliFilters">
-            <button type="button" class="chip active" data-filter="all">الكل (100)</button>
-            <button type="button" class="chip" data-filter="الرياضيات">الرياضيات</button>
-            <button type="button" class="chip" data-filter="الفيزياء">الفيزياء</button>
-            <button type="button" class="chip" data-filter="الكيمياء">الكيمياء</button>
-            <button type="button" class="chip" data-filter="الأحياء">الأحياء</button>
-          </div>
-          <button type="button" class="btn btn-gold" id="quickTahsiliBtn">اختبار سريع (20 سؤالاً)</button>
-        </div>
-        <div id="tahsiliList"></div>
-        <div class="pagination" id="tahsiliPages"></div>
-        <div class="actions">
-          <button type="button" class="btn btn-primary" id="gradeTahsiliBtn">تصحيح الأسئلة المعروضة</button>
-          <button type="button" class="btn btn-light" id="resetTahsiliBtn">إعادة تعيين الإجابات</button>
-        </div>
-        <div class="result-banner" id="tahsiliResult"></div>
-      </div>
-    </section>
-
-    <!-- 4. مراجع ونماذج الأعوام السابقة والروابط السعودية الموثوقة -->
+    <!-- 4. مراجع الأعوام السابقة والروابط السعودية الموثوقة -->
     <section class="panel" id="panel-refs">
       <div class="card">
         <div class="card-head">
-          <h2>أوراق ونماذج تدريبية من الأعوام السابقة</h2>
+          <h2>أوراق ونماذج من الأعوام السابقة (مستمدة من ملف التحصيلي المرفق)</h2>
         </div>
         <div class="grid-cards">
           <div class="archive-box">
-            <h3>أوراق الأعوام السابقة — القسم اللفظي</h3>
-            <p>نماذج تدريبية مركزة على التناظر اللفظي، إكمال الجمل، الخطأ السياقي، ونصوص استيعاب المقروء المتكررة.</p>
-            <button type="button" class="btn btn-primary jump-tab" data-jump="verbal">الانتقال لأسئلة اللفظي (100)</button>
+            <h3>ملف التحصيلي — الرياضيات والنهايات والهندسة</h3>
+            <p>أسئلة مستمدة من الملف حول النهايات، المشتقات، المصفوفات، القطوع، الاحتمالات، والزوايا والمثلثات.</p>
+            <button type="button" class="btn btn-primary jump-tab" data-jump="tahsili">بدء التدريب على التحصيلي</button>
           </div>
           <div class="archive-box">
-            <h3>أوراق الأعوام السابقة — القسم الكمي</h3>
-            <p>نماذج مسائل النسب المئوية، التناسب الطردي والعكسي، الهندسة المستوية، المقارنات، والأسس والجذور.</p>
-            <button type="button" class="btn btn-primary jump-tab" data-jump="quant">الانتقال لأسئلة الكمي (100)</button>
+            <h3>ملف التحصيلي — الفيزياء والطاقة والموجات</h3>
+            <p>أسئلة مستمدة من الملف حول حفظ الطاقة، السقوط الحر، الموجات، الدوائر الكهربائية، والذرة والكم.</p>
+            <button type="button" class="btn btn-primary jump-tab" data-jump="tahsili">مراجعة أسئلة الفيزياء</button>
           </div>
           <div class="archive-box">
-            <h3>أوراق الأعوام السابقة — التحصيلي</h3>
-            <p>تجميعات مراجعة للمفاهيم الأساسية والقوانين المعتمدة في الرياضيات والفيزياء والكيمياء والأحياء.</p>
-            <button type="button" class="btn btn-primary jump-tab" data-jump="tahsili">الانتقال لأسئلة التحصيلي (100)</button>
+            <h3>ملف التحصيلي — الكيمياء والأحياء</h3>
+            <p>أسئلة مستمدة من الملف حول التغيرات والروابط والاتزان والأحماض والقواعد، والخلية والوراثة والبيئة.</p>
+            <button type="button" class="btn btn-primary jump-tab" data-jump="tahsili">مراجعة الكيمياء والأحياء</button>
           </div>
         </div>
       </div>
@@ -560,39 +604,35 @@
           <div class="link-card">
             <div>
               <h3>هيئة تقويم التعليم والتدريب (ETEC)</h3>
-              <p>الجهة الرسمية المسؤولة عن اختبارات القدرات العامة والتحصيل الدراسي والمعايير الوطنية في المملكة.</p>
+              <p>الجهة الرسمية المسؤولة عن اختبارات القدرات العامة والتحصيل الدراسي والمعايير الوطنية.</p>
             </div>
             <a class="btn btn-primary" href="https://etec.gov.sa/" target="_blank" rel="noopener noreferrer">زيارة الموقع الرسمي</a>
           </div>
-
           <div class="link-card">
             <div>
               <h3>بوابة اختبارات قياس / القدرات والتحصيلي</h3>
-              <p>البوابة المخصصة للتعريف بالاختبارات، المواعيد، الأدلة الإرشادية، والتعليمات التنظيمية للطلاب.</p>
+              <p>معلومات الاختبارات والأدلة الإرشادية والتعليمات التنظيمية للطلاب.</p>
             </div>
             <a class="btn btn-primary" href="https://etec.gov.sa/ar/products/qiyas/" target="_blank" rel="noopener noreferrer">زيارة صفحة الاختبارات</a>
           </div>
-
           <div class="link-card">
             <div>
               <h3>منصة مدرستي</h3>
-              <p>المنصة التعليمية المعتمدة لمتابعة الدروس، الواجبات، الأنشطة المدرسية، والتواصل التعليمي.</p>
+              <p>المنصة التعليمية المعتمدة للدروس والواجبات والأنشطة المدرسية.</p>
             </div>
             <a class="btn btn-primary" href="https://schools.madrasati.sa/" target="_blank" rel="noopener noreferrer">الدخول إلى منصة مدرستي</a>
           </div>
-
           <div class="link-card">
             <div>
               <h3>عين التعليمية (iEN)</h3>
-              <p>بوابة الدروس والشروحات المرئية والمصادر الإثرائية للمناهج الدراسية في المملكة العربية السعودية.</p>
+              <p>الدروس المرئية والشروحات والمصادر الإثرائية للمناهج السعودية.</p>
             </div>
             <a class="btn btn-primary" href="https://ien.edu.sa/" target="_blank" rel="noopener noreferrer">زيارة عين التعليمية</a>
           </div>
-
           <div class="link-card">
             <div>
               <h3>وزارة التعليم السعودية</h3>
-              <p>الموقع الرسمي لوزارة التعليم لمتابعة التعميمات والأخبار والخدمات التعليمية المعتمدة.</p>
+              <p>الموقع الرسمي لوزارة التعليم لمتابعة الخدمات والأدلة التعليمية المعتمدة.</p>
             </div>
             <a class="btn btn-primary" href="https://www.moe.gov.sa/" target="_blank" rel="noopener noreferrer">زيارة وزارة التعليم</a>
           </div>
@@ -609,15 +649,15 @@
         <form id="submitForm">
           <div class="form-row">
             <label class="lbl" for="stName">اسم الطالب الثلاثي</label>
-            <input type="text" id="stName" placeholder="مثال: عبدالله محمد العمري" required />
+            <input type="text" id="stName" placeholder="مثال: خالد سعيد الجهني" required />
           </div>
           <div class="form-row">
             <label class="lbl" for="stGrade">الصف / الشعبة</label>
-            <input type="text" id="stGrade" placeholder="مثال: ثالث ثانوي (ب)" />
+            <input type="text" id="stGrade" placeholder="مثال: ثالث ثانوي (أ)" />
           </div>
           <div class="form-row">
             <label class="lbl" for="stSummary">ملخص التدريب أو ملاحظات الطالب</label>
-            <textarea id="stSummary" placeholder="اكتب الأقسام التي تدربت عليها وأبرز ملاحظاتك..." required></textarea>
+            <textarea id="stSummary" placeholder="اكتب الأقسام التي راجعتها من ملف التحصيلي وملاحظاتك..." required></textarea>
           </div>
           <div class="actions">
             <button type="submit" class="btn btn-primary">حفظ وتوليد تقرير التسليم</button>
@@ -631,176 +671,36 @@
   </div>
 
   <script>
-    // مولّد 100 سؤال لكل قسم
-    function buildVerbal100() {
-      const analogies = [
-        ["غصن : شجرة", ["قلم : سبورة", "صفحة : كتاب", "مدرسة : طالب", "سيارة : طريق"], 1, "الغصن جزء من الشجرة والصفحة جزء من الكتاب."],
-        ["طبيب : مستشفى", ["معلم : مدرسة", "مزارع : حصاد", "قاضٍ : محكمة", "طيار : سماء"], 0, "الطبيب يعمل في المستشفى والمعلم يعمل في المدرسة."],
-        ["شمس : نهار", ["قمر : ليل", "برد : شتاء", "سحاب : مطر", "ظل : شجرة"], 0, "الشمس ترتبط بالنهار والقمر يرتبط بالليل."],
-        ["قلم : كتابة", ["مقص : قص", "كتاب : قراءة", "فرشاة : رسم", "مفتاح : قفل"], 2, "القلم أداة للكتابة والفرشاة أداة للرسم."],
-        ["جوع : طعام", ["عطش : ماء", "تعب : راحة", "جهل : علم", "مرض : دواء"], 0, "الجوع يُذهب بالطعام والعطش يُذهب بالماء."],
-        ["عين : رؤية", ["أذن : سمع", "أنف : شم", "لسان : تذوق", "يد : لمس"], 0, "العين عضو الرؤية والأذن عضو السمع."],
-        ["كتاب : صفحات", ["سنة : شهور", "أسبوع : أيام", "بيت : غرف", "جملة : كلمات"], 2, "الكتاب يتكون من صفحات والبيت يتكون من غرف."],
-        ["حرارة : تمدد", ["برودة : انكماش", "مطر : سيول", "رياح : غبار", "نار : دخان"], 0, "الحرارة تسبب التمدد والبرودة تسبب الانكماش."]
-      ];
-
-      const completions = [
-        ["التخطيط المبكر يوفّر ......... ويقلّل من ......... العشوائية.", ["الوقت — القرارات", "المال — الخطط", "الجهد — النجاح", "الصبر — الإتقان"], 0, "التخطيط المبكر يوفر الوقت ويقلل القرارات العشوائية."],
-        ["القراءة المستمرة توسّع ......... وتنمّي ......... اللغوية.", ["المدارك — الثروة", "المسافة — السرعة", "الفجوة — الحيرة", "التكلفة — المدة"], 0, "القراءة توسع المدارك وتنمي الثروة اللغوية."],
-        ["من يواظب على ......... يجد أثره واضحاً في ......... الاختبارات.", ["المراجعة — نتائج", "التأجيل — صعوبة", "الإهمال — سهولة", "العجلة — أخطاء"], 0, "المواظبة على المراجعة تظهر في نتائج الاختبارات."],
-        ["التعاون بين الزملاء يرفع ......... ويسرّع من ......... المهام.", ["الإنتاجية — إنجاز", "التوتر — تعطيل", "الخلاف — تأخير", "الملل — إهمال"], 0, "التعاون يرفع الإنتاجية ويسرع إنجاز المهام."]
-      ];
-
-      const comprehensions = [
-        ["بحسب نصوص التدريب: ما أثر تنظيم الوقت اليومي للطالب؟", ["يقلل الضغط ويزيد الاستيعاب", "يؤدي إلى تشتت الانتباه", "يلغي الحاجة للمراجعة", "يضاعف وقت المذاكرة دون فائدة"], 0, "تنظيم الوقت يساعد على تقليل الضغط وزيادة الاستيعاب."],
-        ["ما أهمية حل نماذج الأعوام السابقة قبل الاختبار؟", ["تعرّف الطالب بنمط الأسئلة وتديره للوقت", "تغني عن فهم المفاهيم الأساسية", "تعتمد على التخمين فقط", "تُستخدم في آخر ساعة فقط"], 0, "نماذج الأعوام السابقة تعرّف بنمط الأسئلة وتدرب على إدارة الوقت."],
-        ["ما السلوك الأفضل عند مواجهة سؤال صعب أثناء الاختبار؟", ["تجاوزه مؤقتاً والعودة إليه لاحقاً", "التوقف طويلاً عنده وإضاعة الوقت", "ترك بقية الأسئلة دون محاولة", "مسح الإجابات السابقة"], 0, "تجاوز السؤال الصعب مؤقتاً يحفظ الوقت لبقية الأسئلة."]
-      ];
-
-      const contextualErrors = [
-        ["حدّد الكلمة غير الصحيحة سياقياً: «الاجتهاد والصبر طريق الفشل والتفوق معاً».", ["الاجتهاد", "الصبر", "الفشل", "التفوق"], 2, "الصحيح أن الاجتهاد والصبر طريق النجاح والتفوق لا الفشل."],
-        ["حدّد الكلمة غير الصحيحة سياقياً: «الاهتمام بالصحة والنوم المبكر يضعف التركيز صباحاً».", ["الاهتمام", "الصحة", "يضعف", "صباحاً"], 2, "الصحيح أن النوم المبكر والاهتمام بالصحة يقوّي التركيز لا يضعفه."],
-        ["حدّد الكلمة غير الصحيحة سياقياً: «المذاكرة بتركيز أفضل من قضاء ساعات طويلة في إهمال».", ["المذاكرة", "تركيز", "ساعات", "إهمال"], 3, "الصحيح هو قضاء ساعات طويلة في تشتت أو ملل لا إهمال."]
-      ];
-
-      const out = [];
-      for (let i = 1; i <= 100; i++) {
-        let cat, item;
-        if (i <= 35) {
-          cat = "التناظر اللفظي";
-          item = analogies[(i - 1) % analogies.length];
-          out.push({
-            id: "v_" + i,
-            num: i,
-            cat,
-            q: `${i}. ${item[0]}`,
-            opts: item[1],
-            ans: item[2],
-            exp: item[3]
-          });
-        } else if (i <= 60) {
-          cat = "إكمال الجمل";
-          item = completions[(i - 36) % completions.length];
-          out.push({
-            id: "v_" + i,
-            num: i,
-            cat,
-            q: `${i}. ${item[0]}`,
-            opts: item[1],
-            ans: item[2],
-            exp: item[3]
-          });
-        } else if (i <= 85) {
-          cat = "استيعاب المقروء";
-          item = comprehensions[(i - 61) % comprehensions.length];
-          out.push({
-            id: "v_" + i,
-            num: i,
-            cat,
-            q: `${i}. ${item[0]}`,
-            opts: item[1],
-            ans: item[2],
-            exp: item[3]
-          });
-        } else {
-          cat = "الخطأ السياقي";
-          item = contextualErrors[(i - 86) % contextualErrors.length];
-          out.push({
-            id: "v_" + i,
-            num: i,
-            cat,
-            q: `${i}. ${item[0]}`,
-            opts: item[1],
-            ans: item[2],
-            exp: item[3]
-          });
-        }
-      }
-      return out;
-    }
-
-    function buildQuant100() {
-      const out = [];
-      for (let i = 1; i <= 100; i++) {
-        const k = (i % 9) + 2;
-        if (i <= 30) {
-          const price = k * 5;
-          const count = 3;
-          const total = price * count;
-          out.push({
-            id: "q_" + i,
-            num: i,
-            cat: "الحساب والنسب",
-            q: `${i}. إذا كان سعر دفتر ${price} ريالاً، فكم ثمن ${count} دفاتر من النوع نفسه؟`,
-            opts: [`${total - 10} ريالاً`, `${total} ريالاً`, `${total + 10} ريالاً`, `${total + 15} ريالاً`],
-            ans: 1,
-            exp: `${price} × ${count} = ${total} ريالاً.`
-          });
-        } else if (i <= 55) {
-          const offset = k + 4;
-          const x = k * 3;
-          const sum = x + offset;
-          out.push({
-            id: "q_" + i,
-            num: i,
-            cat: "الجبر والمعادلات",
-            q: `${i}. إذا كان س + ${offset} = ${sum}، فما قيمة س؟`,
-            opts: [`${x - 2}`, `${x}`, `${x + 2}`, `${sum}`],
-            ans: 1,
-            exp: `س = ${sum} - ${offset} = ${x}.`
-          });
-        } else if (i <= 80) {
-          const len = k + 6;
-          const wid = k + 2;
-          const perim = 2 * (len + wid);
-          out.push({
-            id: "q_" + i,
-            num: i,
-            cat: "الهندسة والقياس",
-            q: `${i}. مستطيل طوله ${len} سم وعرضه ${wid} سم، ما محيطه؟`,
-            opts: [`${len + wid} سم`, `${perim} سم`, `${len * wid} سم`, `${perim + 4} سم`],
-            ans: 1,
-            exp: `المحيط = 2 × (${len} + ${wid}) = ${perim} سم.`
-          });
-        } else {
-          const avg = k * 4;
-          const n = 3;
-          const totalSum = avg * n;
-          out.push({
-            id: "q_" + i,
-            num: i,
-            cat: "الإحصاء والاحتمالات",
-            q: `${i}. متوسط (معدل) ${n} أعداد يساوي ${avg}، فما مجموع هذه الأعداد؟`,
-            opts: [`${avg}`, `${totalSum - 6}`, `${totalSum}`, `${totalSum + 6}`],
-            ans: 2,
-            exp: `المجموع = المتوسط × العدد = ${avg} × ${n} = ${totalSum}.`
-          });
-        }
-      }
-      return out;
-    }
-
-    function buildTahsili100() {
+    function buildTahsiliFromPdf100() {
       const bank = {
         "الرياضيات": [
-          ["إذا كانت د(س) = 3س + 2، فإن د(2) تساوي:", ["6", "8", "10", "5"], 1, "د(2) = 3(2) + 2 = 8."],
-          ["مشتقة الدالة الثابتة ف(س) = 15 تساوي:", ["15", "1", "0", "س"], 2, "مشتقة العدد الثابت تساوي دائماً صفراً."],
-          ["مجموع زوايا المثلث الداخلية في الهندسة الإقليدية يساوي:", ["90°", "180°", "270°", "360°"], 1, "مجموع زوايا أي مثلث يساوي 180 درجة."]
+          ["إذا كانت د(س) = 2س³ + 3س² - 5س + 11، فما قيمة د(2) - د(0)؟", ["11", "12", "15", "18"], 3, "بتعويض س=2 نحصل على 29، وبطرح د(0)=11 يصبح الناتج 18."],
+          ["ما مركز القطع الزائد الذي معادلته (ص - 4)² / 48 - (س + 5)² / 36 = 1 ؟", ["(4، 5)", "(5، 4)", "(-5، 4)", "(-5، -4)"], 2, "المركز هو (هـ، ك) = (-5، 4)."],
+          ["عدد عناصر فضاء العينة في تجربة إلقاء قطعة نقود ومكعب مرقم معاً هو:", ["4", "6", "8", "12"], 3, "2 × 6 = 12 عنصراً."],
+          ["مشتقة الدالة الثابتة د(س) = جذر 7 تساوي:", ["جذر 7", "1/(2 جذر 7)", "0.5 جذر 7", "0"], 3, "مشتقة أي ثابت تساوي صفراً."],
+          ["أساس المتتابعة الهندسية: 12، 36، 108، 324، ... يساوي:", ["12", "2", "3", "6"], 2, "36 ÷ 12 = 3."]
         ],
         "الفيزياء": [
-          ["الوحدة الدولية لقياس القوة (F) هي:", ["الجول", "النيوتن", "الواط", "الأوم"], 1, "تقاس القوة بوحدة النيوتن (N)."],
-          ["إذا تحرك جسم بسرعة ثابتة في خط مستقيم، فإن تسارعه يساوي:", ["موجباً دائماً", "سالباً دائماً", "صفراً", "مساوياً للسرعة"], 2, "ثبات السرعة المتجهة يعني أن التسارع يساوي صفراً."],
-          ["سرعة الضوء في الفراغ تساوي تقريباً:", ["3 × 10⁸ م/ث", "3 × 10⁶ م/ث", "343 م/ث", "1500 م/ث"], 0, "سرعة الضوء في الفراغ تساوي تقريباً 3 × 10⁸ م/ث."]
+          ["عبارة «الطاقة لا تفنى ولا تستحدث بل تتحول من شكل إلى آخر» تمثل:", ["فرضية", "قانوناً علمياً", "استنتاجاً", "نظرية"], 1, "هذا نص قانون حفظ الطاقة."],
+          ["عندما تفقد الأنوية غير المستقرة الطاقة بإصدار إشعاعات تلقائياً تسمى:", ["التحلل الضوئي", "التحلل الذري", "التحلل الطبيعي", "الاضمحلال الإشعاعي"], 3, "يُعرف ذلك بالاضمحلال الإشعاعي."],
+          ["لأي جسم يسقط سقوطاً حرّاً، فإن سرعته بعد ثانيتين تزداد بمقدار:", ["2 × 9.8", "0.5 × 9.8", "السرعة الابتدائية - النهائية", "السرعة النهائية - الابتدائية"], 0, "من ع = ع0 + جـ ز تزداد بمقدار 2 × 9.8."],
+          ["العامل الرئيس في تحديد استقرار الذرة هو نسبة:", ["النيوترونات إلى البروتونات", "النيوترونات إلى الإلكترونات", "البروتونات إلى الإلكترونات", "الإلكترونات إلى النيترونات"], 0, "يعتمد استقرار النواة على نسبة النيوترونات إلى البروتونات."],
+          ["معظم مكونات النجوم والمجرات تكون في حالة:", ["جامدة", "سائلة", "بلازما", "غازية"], 2, "توجد معظم مادة النجوم والمجرات في حالة البلازما."]
         ],
         "الكيمياء": [
-          ["الرقم الهيدروجيني (pH) للمحاليل الحمضية يكون:", ["أكبر من 7", "يساوي 7", "أقل من 7", "يساوي 14"], 2, "المحاليل الحمضية لها pH أقل من 7."],
-          ["أي مما يلي يُعدّ تغيراً كيميائياً؟", ["انصهار الجليد", "تبخر الماء", "صدأ الحديد", "تقطيع الورق"], 2, "صدأ الحديد ينتج مادة جديدة لذا هو تغير كيميائي."],
-          ["العدد الذري للعنصر يمثل عدد:", ["النيوترونات فقط", "البروتونات في النواة", "الإلكترونات المفقودة", "الكتلة الذرية"], 1, "العدد الذري يساوي عدد البروتونات داخل نواة الذرة."]
+          ["عملية تتبخر فيها المادة الصلبة دون أن تنصهر وتُستخدم في فصل المخاليط هي:", ["التقطير", "التسامي", "التبلور", "الترشيح"], 1, "التسامي هو تحول المادة الصلبة إلى غاز مباشرة دون انصهار."],
+          ["تصبح بعض المواد ذات شحنة موجبة لأنها:", ["فقدت إلكترونات", "اكتسبت إلكترونات", "فقدت بروتونات", "اكتسبت بروتونات"], 0, "فقد الإلكترونات يحوّل الذرة إلى أيون موجب."],
+          ["حسب مقياس الحموضة (pH)، يكون المحلول قاعدياً إذا كان:", ["pH = 0", "pH = 7", "pH > 7", "pH < 7"], 2, "المحاليل القاعدية لها pH أكبر من 7."],
+          ["أي مما يلي ليس من الخواص الجامعة للمحاليل؟", ["الارتفاع في درجة الغليان", "الضغط الاسموزي", "الكثافة", "الانخفاض في درجة التجمد"], 2, "الكثافة ليست من الخواص الجامعة للمحاليل."],
+          ["العامل الوحيد الذي يغير من قيمة ثابت الاتزان (Keq) هو:", ["الضغط", "درجة الحرارة", "التركيز", "العامل المحفز"], 1, "تتغير قيمة ثابت الاتزان بتغير درجة الحرارة فقط."]
         ],
         "الأحياء": [
-          ["العضية المسؤولة عن إنتاج الطاقة (ATP) في الخلية هي:", ["الرايبوسوم", "الميتوكندريا", "النوية", "الفجوة"], 1, "الميتوكندريا هي مركز إنتاج الطاقة في الخلية."],
-          ["تحدث عملية البناء الضوئي في النباتات أساساً داخل:", ["البلاستيدات الخضراء", "الجدار الخلوي", "الليسوسوم", "الغشاء البلازمي"], 0, "تتم عملية البناء الضوئي في البلاستيدات الخضراء."],
-          ["الجزيء الذي يحمل المعلومات الوراثية في معظم الكائنات الحية هو:", ["DNA", "ATP", "الجلوكوز", "النشا"], 0, "الحمض النووي DNA يحمل الشيفرة الوراثية."]
+          ["نوع القشور في سمكة السردين هو:", ["قرصية", "مشطية", "معينية لامعة", "صفائحية"], 0, "تتميز أسماك السردين بالقشور القرصية."],
+          ["الخلية التي تحتوي على المريكزات لا تحتوي على:", ["ميتوكندريا", "بلاستيدات خضراء", "شبكة إندوبلازمية", "غشاء خلوي"], 1, "الخلايا الحيوانية تحتوي على المريكزات ولا تحوي بلاستيدات خضراء."],
+          ["أي الحيوانات التالية له في القلب ثلاث حجرات؟", ["الأسماك", "البرمائيات", "الطيور", "الثدييات"], 1, "للبرمائيات قلب مكوّن من ثلاث حجرات."],
+          ["أي الجزيئات التالية يخزن الطاقة في الخلية؟", ["ATP", "NADP", "NAD", "FAD"], 0, "جزيء ATP هو الناقل والمخزن الرئيس للطاقة في الخلية."],
+          ["الإنزيم الذي يهضم البروتينات في المعدة في وسط حمضي هو:", ["الأميليز", "الببسين", "الأدرينالين", "الفايبرين"], 1, "يعمل إنزيم الببسين في المعدة."],
+          ["العضو المسؤول عن ترشيح الفضلات والماء والأملاح من الدم هو:", ["القلب", "الرئة", "المعدة", "الكلية"], 3, "تقوم الكلية بترشيح الدم وتنقية الفضلات."]
         ]
       };
 
@@ -823,10 +723,102 @@
       return out;
     }
 
+    function buildVerbal100() {
+      const analogies = [
+        ["غصن : شجرة", ["قلم : سبورة", "صفحة : كتاب", "مدرسة : طالب", "سيارة : طريق"], 1, "الغصن جزء من الشجرة والصفحة جزء من الكتاب."],
+        ["طبيب : مستشفى", ["معلم : مدرسة", "مزارع : حصاد", "قاضٍ : محكمة", "طيار : سماء"], 0, "الطبيب يعمل في المستشفى والمعلم يعمل في المدرسة."],
+        ["شمس : نهار", ["قمر : ليل", "برد : شتاء", "سحاب : مطر", "ظل : شجرة"], 0, "الشمس ترتبط بالنهار والقمر يرتبط بالليل."],
+        ["قلم : كتابة", ["مقص : قص", "كتاب : قراءة", "فرشاة : رسم", "مفتاح : قفل"], 2, "القلم أداة للكتابة والفرشاة أداة للرسم."],
+        ["جوع : طعام", ["عطش : ماء", "تعب : راحة", "جهل : علم", "مرض : دواء"], 0, "الجوع يُذهب بالطعام والعطش يُذهب بالماء."]
+      ];
+      const completions = [
+        ["التخطيط المبكر يوفّر ......... ويقلّل من ......... العشوائية.", ["الوقت — القرارات", "المال — الخطط", "الجهد — النجاح", "الصبر — الإتقان"], 0, "التخطيط يوفّر الوقت ويقلل القرارات العشوائية."],
+        ["القراءة المستمرة توسّع ......... وتنمّي ......... اللغوية.", ["المدارك — الثروة", "المسافة — السرعة", "الفجوة — الحيرة", "التكلفة — المدة"], 0, "القراءة توسع المدارك وتنمي الثروة اللغوية."],
+        ["من يواظب على ......... يجد أثره واضحاً في ......... الاختبارات.", ["المراجعة — نتائج", "التأجيل — صعوبة", "الإهمال — سهولة", "العجلة — أخطاء"], 0, "المواظبة على المراجعة تظهر في نتائج الاختبارات."]
+      ];
+      const comprehensions = [
+        ["ما أثر تنظيم الوقت اليومي للطالب أثناء فترة الاستعداد للاختبارات؟", ["يقلل الضغط ويزيد الاستيعاب", "يؤدي إلى تشتت الانتباه", "يلغي الحاجة للمراجعة", "يضاعف الوقت دون فائدة"], 0, "تنظيم الوقت يساعد على تقليل الضغط وزيادة الاستيعاب."],
+        ["ما أهمية حل نماذج الأعوام السابقة قبل الاختبار؟", ["تعرّف الطالب بنمط الأسئلة وتدربه على الوقت", "تغني عن فهم المفاهيم", "تعتمد على التخمين فقط", "تُستخدم في آخر ساعة فقط"], 0, "نماذج الأعوام السابقة تعرّف بنمط الأسئلة وتدرب على إدارة الوقت."]
+      ];
+      const contextualErrors = [
+        ["حدّد الكلمة غير الصحيحة سياقياً: «الاجتهاد والصبر طريق الفشل والتفوق معاً».", ["الاجتهاد", "الصبر", "الفشل", "التفوق"], 2, "الصحيح أن الاجتهاد والصبر طريق النجاح والتفوق لا الفشل."],
+        ["حدّد الكلمة غير الصحيحة سياقياً: «النوم المبكر والاهتمام بالصحة يضعف التركيز صباحاً».", ["النوم المبكر", "الاهتمام", "يضعف", "صباحاً"], 2, "الصحيح أن النوم المبكر يقوّي التركيز لا يضعفه."]
+      ];
+
+      const out = [];
+      for (let i = 1; i <= 100; i++) {
+        let cat, item;
+        if (i <= 35) {
+          cat = "التناظر اللفظي";
+          item = analogies[(i - 1) % analogies.length];
+        } else if (i <= 60) {
+          cat = "إكمال الجمل";
+          item = completions[(i - 36) % completions.length];
+        } else if (i <= 85) {
+          cat = "استيعاب المقروء";
+          item = comprehensions[(i - 61) % comprehensions.length];
+        } else {
+          cat = "الخطأ السياقي";
+          item = contextualErrors[(i - 86) % contextualErrors.length];
+        }
+        out.push({ id: "v_" + i, num: i, cat, q: `${i}. ${item[0]}`, opts: item[1], ans: item[2], exp: item[3] });
+      }
+      return out;
+    }
+
+    function buildQuant100() {
+      const out = [];
+      for (let i = 1; i <= 100; i++) {
+        const k = (i % 9) + 2;
+        if (i <= 30) {
+          const price = k * 5;
+          const count = 3;
+          const total = price * count;
+          out.push({
+            id: "q_" + i, num: i, cat: "الحساب والنسب",
+            q: `${i}. إذا كان سعر دفتر ${price} ريالاً، فكم ثمن ${count} دفاتر؟`,
+            opts: [`${total - 10} ريالاً`, `${total} ريالاً`, `${total + 10} ريالاً`, `${total + 15} ريالاً`],
+            ans: 1, exp: `${price} × ${count} = ${total} ريالاً.`
+          });
+        } else if (i <= 55) {
+          const offset = k + 4;
+          const x = k * 3;
+          const sum = x + offset;
+          out.push({
+            id: "q_" + i, num: i, cat: "الجبر والمعادلات",
+            q: `${i}. إذا كان س + ${offset} = ${sum}، فما قيمة س؟`,
+            opts: [`${x - 2}`, `${x}`, `${x + 2}`, `${sum}`],
+            ans: 1, exp: `س = ${sum} - ${offset} = ${x}.`
+          });
+        } else if (i <= 80) {
+          const len = k + 6;
+          const wid = k + 2;
+          const perim = 2 * (len + wid);
+          out.push({
+            id: "q_" + i, num: i, cat: "الهندسة والقياس",
+            q: `${i}. مستطيل طوله ${len} سم وعرضه ${wid} سم، ما محيطه؟`,
+            opts: [`${len + wid} سم`, `${perim} سم`, `${len * wid} سم`, `${perim + 4} سم`],
+            ans: 1, exp: `المحيط = 2 × (${len} + ${wid}) = ${perim} سم.`
+          });
+        } else {
+          const avg = k * 4;
+          const n = 3;
+          const totalSum = avg * n;
+          out.push({
+            id: "q_" + i, num: i, cat: "الإحصاء والاحتمالات",
+            q: `${i}. متوسط ${n} أعداد يساوي ${avg}، فما مجموع هذه الأعداد؟`,
+            opts: [`${avg}`, `${totalSum - 6}`, `${totalSum}`, `${totalSum + 6}`],
+            ans: 2, exp: `المجموع = ${avg} × ${n} = ${totalSum}.`
+          });
+        }
+      }
+      return out;
+    }
+
     const SECTIONS = {
+      tahsili: { data: buildTahsiliFromPdf100(), filter: "all", page: 1, pageSize: 10, quickIds: null },
       verbal: { data: buildVerbal100(), filter: "all", page: 1, pageSize: 10, quickIds: null },
-      quant: { data: buildQuant100(), filter: "all", page: 1, pageSize: 10, quickIds: null },
-      tahsili: { data: buildTahsili100(), filter: "all", page: 1, pageSize: 10, quickIds: null }
+      quant: { data: buildQuant100(), filter: "all", page: 1, pageSize: 10, quickIds: null }
     };
 
     function escapeHtml(str) {
@@ -837,18 +829,16 @@
         .replace(/"/g, "&quot;");
     }
 
-    function getFilteredQuestions(secKey) {
+    function getFiltered(secKey) {
       const st = SECTIONS[secKey];
-      if (st.quickIds) {
-        return st.data.filter((q) => st.quickIds.includes(q.id));
-      }
+      if (st.quickIds) return st.data.filter((q) => st.quickIds.includes(q.id));
       if (st.filter === "all") return st.data;
       return st.data.filter((q) => q.cat === st.filter);
     }
 
     function renderSection(secKey) {
       const st = SECTIONS[secKey];
-      const filtered = getFilteredQuestions(secKey);
+      const filtered = getFiltered(secKey);
       const totalPages = Math.max(1, Math.ceil(filtered.length / st.pageSize));
       if (st.page > totalPages) st.page = 1;
 
@@ -859,7 +849,7 @@
       const statusEl = document.getElementById(secKey + "Status");
       const pagesEl = document.getElementById(secKey + "Pages");
 
-      statusEl.textContent = `إجمالي الأسئلة المطابقة: ${filtered.length} — الصفحة ${st.page} من ${totalPages}`;
+      statusEl.textContent = `الأسئلة المطابقة: ${filtered.length} — الصفحة ${st.page} من ${totalPages}`;
       listEl.innerHTML = "";
 
       pageItems.forEach((item) => {
@@ -889,7 +879,7 @@
       if (!st.quickIds && totalPages > 1) {
         for (let p = 1; p <= totalPages; p++) {
           const btn = document.createElement("button");
-          btn.type = "button"
+          btn.type = "button";
           btn.className = "page-btn" + (p === st.page ? " active" : "");
           btn.textContent = p;
           btn.addEventListener("click", () => {
@@ -901,9 +891,9 @@
       }
     }
 
-    function gradeCurrentView(secKey) {
+    function gradeView(secKey) {
       const st = SECTIONS[secKey];
-      const filtered = getFilteredQuestions(secKey);
+      const filtered = getFiltered(secKey);
       const start = (st.page - 1) * st.pageSize;
       const targetItems = st.quickIds ? filtered : filtered.slice(start, start + st.pageSize);
 
@@ -927,22 +917,17 @@
       const pct = targetItems.length ? Math.round((correct / targetItems.length) * 100) : 0;
       const resEl = document.getElementById(secKey + "Result");
       resEl.style.display = "block";
-      resEl.textContent = `نتيجتك في هذه المجموعة: ${correct} من ${targetItems.length} (${pct}%)`;
+      resEl.textContent = `نتيجتك: ${correct} من ${targetItems.length} (${pct}%)`;
     }
 
-    function resetCurrentView(secKey) {
+    function resetView(secKey) {
       const st = SECTIONS[secKey];
       st.quickIds = null;
       st.page = 1;
       st.data.forEach((item) => {
-        document.querySelectorAll(`input[name="${item.id}"]`).forEach((r) => {
-          r.checked = false;
-        });
+        document.querySelectorAll(`input[name="${item.id}"]`).forEach((r) => { r.checked = false; });
         const expEl = document.getElementById("exp-" + item.id);
-        if (expEl) {
-          expEl.className = "exp";
-          expEl.textContent = "";
-        }
+        if (expEl) { expEl.className = "exp"; expEl.textContent = ""; }
       });
       const resEl = document.getElementById(secKey + "Result");
       resEl.style.display = "none";
@@ -950,35 +935,23 @@
       renderSection(secKey);
     }
 
-    function startQuickQuiz(secKey, count) {
+    function quickQuiz(secKey, count) {
       const st = SECTIONS[secKey];
       const pool = st.filter === "all" ? st.data : st.data.filter((q) => q.cat === st.filter);
-      const shuffled = [...pool].sort(() => Math.random() - 0.5).slice(0, count);
-      st.quickIds = shuffled.map((q) => q.id);
+      st.quickIds = [...pool].sort(() => Math.random() - 0.5).slice(0, count).map((q) => q.id);
       st.page = 1;
       renderSection(secKey);
     }
 
-    // تبويبات التنقل الرئيسية
     function openTab(tabName) {
-      document.querySelectorAll(".tab-btn").forEach((b) => {
-        b.classList.toggle("active", b.dataset.tab === tabName);
-      });
-      document.querySelectorAll(".panel").forEach((p) => {
-        p.classList.toggle("active", p.id === "panel-" + tabName);
-      });
+      document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.tab === tabName));
+      document.querySelectorAll(".panel").forEach((p) => p.classList.toggle("active", p.id === "panel-" + tabName));
     }
 
-    document.querySelectorAll(".tab-btn").forEach((btn) => {
-      btn.addEventListener("click", () => openTab(btn.dataset.tab));
-    });
+    document.querySelectorAll(".tab-btn").forEach((btn) => btn.addEventListener("click", () => openTab(btn.dataset.tab)));
+    document.querySelectorAll(".jump-tab").forEach((btn) => btn.addEventListener("click", () => openTab(btn.dataset.jump)));
 
-    document.querySelectorAll(".jump-tab").forEach((btn) => {
-      btn.addEventListener("click", () => openTab(btn.dataset.jump));
-    });
-
-    // فلاتر الأقسام
-    ["verbal", "quant", "tahsili"].forEach((secKey) => {
+    ["tahsili", "verbal", "quant"].forEach((secKey) => {
       document.querySelectorAll(`#${secKey}Filters .chip`).forEach((chip) => {
         chip.addEventListener("click", () => {
           document.querySelectorAll(`#${secKey}Filters .chip`).forEach((c) => c.classList.remove("active"));
@@ -991,20 +964,19 @@
       });
     });
 
-    document.getElementById("quickVerbalBtn").addEventListener("click", () => startQuickQuiz("verbal", 20));
-    document.getElementById("quickQuantBtn").addEventListener("click", () => startQuickQuiz("quant", 20));
-    document.getElementById("quickTahsiliBtn").addEventListener("click", () => startQuickQuiz("tahsili", 20));
+    document.getElementById("quickTahsiliBtn").addEventListener("click", () => quickQuiz("tahsili", 20));
+    document.getElementById("quickVerbalBtn").addEventListener("click", () => quickQuiz("verbal", 20));
+    document.getElementById("quickQuantBtn").addEventListener("click", () => quickQuiz("quant", 20));
 
-    document.getElementById("gradeVerbalBtn").addEventListener("click", () => gradeCurrentView("verbal"));
-    document.getElementById("gradeQuantBtn").addEventListener("click", () => gradeCurrentView("quant"));
-    document.getElementById("gradeTahsiliBtn").addEventListener("click", () => gradeCurrentView("tahsili"));
+    document.getElementById("gradeTahsiliBtn").addEventListener("click", () => gradeView("tahsili"));
+    document.getElementById("gradeVerbalBtn").addEventListener("click", () => gradeView("verbal"));
+    document.getElementById("gradeQuantBtn").addEventListener("click", () => gradeView("quant"));
 
-    document.getElementById("resetVerbalBtn").addEventListener("click", () => resetCurrentView("verbal"));
-    document.getElementById("resetQuantBtn").addEventListener("click", () => resetCurrentView("quant"));
-    document.getElementById("resetTahsiliBtn").addEventListener("click", () => resetCurrentView("tahsili"));
+    document.getElementById("resetTahsiliBtn").addEventListener("click", () => resetView("tahsili"));
+    document.getElementById("resetVerbalBtn").addEventListener("click", () => resetView("verbal"));
+    document.getElementById("resetQuantBtn").addEventListener("click", () => resetView("quant"));
 
-    // تسليم الطلاب
-    const STORAGE_KEY = "harun_alrashid_300q_v1";
+    const STORAGE_KEY = "harun_rashid_logo_pdf_v1";
     let lastReport = "";
 
     function getLogs() {
@@ -1039,15 +1011,14 @@
       renderLogs();
 
       lastReport =
-        `منصة المراجعة والتدريب للقدرات والتحصيلي\n` +
-        `ثانوية هارون الرشيد — المدينة المنورة\n` +
-        `مدير المدرسة: سلطان معلا المطيري | إعداد وتنسيق: خالد العرفي\n` +
+        `منصة المراجعة والتدريب — ثانوية هارون الرشيد\n` +
+        `المدينة المنورة | مدير المدرسة: سلطان معلا المطيري | إعداد وتنسيق: خالد العرفي\n` +
         `الطالب: ${name}${grade ? " (" + grade + ")" : ""}\n` +
         `الملخص والملاحظات: ${summary}`;
 
       const msg = document.getElementById("submitMsg");
       msg.style.display = "block";
-      msg.textContent = "تم حفظ التسليم وتجهيز التقرير بنجاح. اضغط على «نسخ التقرير» لإرساله.";
+      msg.textContent = "تم حفظ التسليم وتوليد التقرير بنجاح. اضغط على «نسخ التقرير» لإرساله.";
       e.target.reset();
     });
 
@@ -1064,9 +1035,9 @@
       }
     });
 
+    renderSection("tahsili");
     renderSection("verbal");
     renderSection("quant");
-    renderSection("tahsili");
     renderLogs();
   </script>
 </body>
